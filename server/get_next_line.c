@@ -5,7 +5,7 @@
 ** Login   <mineshot03@epitech.net>
 **
 ** Started on  Wed Mar  9 11:13:53 2016 Mineshot03
-** Last update Sun Apr  3 23:14:39 2016 Mineshot03
+** Last update Tue Apr 19 17:10:44 2016 Frédéric GOMEL
 */
 
 #include <stdlib.h>
@@ -35,7 +35,7 @@ char		*gnl(const int fd)
   if ((rest = write_in_rest(rest, &str, fd)) == NULL)
     return (NULL);
   free(str.buffer);
-  str.str[str.i] = '\n';
+  str.str[str.i] = '\0';
   return (str.str);
 }
 

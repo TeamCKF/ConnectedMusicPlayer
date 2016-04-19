@@ -5,14 +5,16 @@
 ## Login   <gomel_f@epitech.net>
 ## 
 ## Started on  Sun Apr 17 02:47:00 2016 Frédéric GOMEL
-## Last update Tue Apr 19 16:28:34 2016 Frédéric GOMEL
+## Last update Tue Apr 19 17:43:34 2016 Frédéric GOMEL
 ##
 
 NAME1	=	cmp-server
 
 NAME2	=	cmp
 
-SRC1	=	server/main.c
+SRC1	=	server/main.c \
+		server/get_next_line.c \
+		server/my_realloc.c
 
 SRC2	=	
 
@@ -20,9 +22,9 @@ OBJ1	=	$(SRC1:.c=.o)
 
 OBJ2	=	$(SRC2:.c=.o)
 
-CFLAGS	+=	-Wextra -Wall -Werror
+#CFLAGS	+=	-Wextra -Wall -Werror
 #CFLAGS +=	-ansi	-pedantic
-CFLAGS	+=	-I
+CFLAGS	+=	-Iinclude/
 #LFLAGS	=	-L/api/lowlevel/lib/x86_64 -lfmod
 
 CC	=	gcc
