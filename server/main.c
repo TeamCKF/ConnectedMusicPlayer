@@ -5,7 +5,7 @@
 ** Login   <gomel_f@epitech.net>
 **
 ** Started on  Tue Apr 19 15:37:59 2016 Frédéric GOMEL
-** Last update Tue Apr 19 18:22:13 2016 Frédéric GOMEL
+** Last update Tue Apr 19 18:43:28 2016 Frédéric GOMEL
 */
 
 #include <fmod.h>
@@ -16,6 +16,7 @@
 #include <dirent.h>
 #include <sys/types.h>
 #include "get_next_line.h"
+#include "cmp-server.h"
 
 char *path_music;
 int  lang;
@@ -25,7 +26,7 @@ void	copyright_display()
 {
   printf("\033[33m==========================================\n");
   printf("\033[31m CMP-Server.  Copyright (c) TeamCKF 2016.\n");
-  printf("\033[33m==========================================\n");
+  printf("\033[33m==========================================\n\033[00m");
 }
 
 void	create_config()
@@ -34,13 +35,17 @@ void	create_config()
   int	fd;
   char	portp[5];
 
-  printf("\033[32mWelcome to the assistance of configuration of ConnectedMusiquePlayer - Server.\n\033[00m");
-  printf("Choose your language : 1 - Fr, 2 - En\n # ");
+  printf("\033[32mWelcome to the ConnectedMusicPlayer configuration system\n\033[00m");
+  printf("Choose language : 1 - Fr, 2 - En\n # ");
   scanf("%i", &lang);
-  while (lang <= 0 && lang >= 3)
+  if (lang != 1 && lang != 2)
+    lang = 0;
+  while (lang == 0)
     {
-      printf("Wrong. You didn't choose a correct language : 1 - Fr, 2 - En\n");
+      printf("Wrong. You didn't choose a correct language : 1 - Fr, 2 - En\n # ");
       scanf("%i", &lang);
+      if (lang != 1 && lang != 2)
+	lang = 0;
     }
   if (lang == 1)
     {
@@ -150,15 +155,19 @@ void	get_path(int fd)
   while (para[i] != '\0')
     portp[j++] = para[i++];
   port = atoi(portp);
+}
+
+void	display_conf()
+{
   if (lang == 1)
     {
-      printf("CHEMIN MUSIQUE : %s\n", path_music);
-      printf("PORT : %i\n", port);
+      printf("%s CHEMIN MUSIQUE :%s %s\n", RED, REINIT, path_music);
+      printf("%s PORT : %s %i\n", RED, REINIT, port);
     }
   else
     {
-      printf("PATH MUSIC : %s\n", path_music);
-      printf("PORT : %i\n", port);
+      printf("%s PATH MUSIC :%s %s\n",RED, REINIT, path_music);
+      printf("%s PORT :%s %i\n", RED, REINIT, port);
     }
 }
 
@@ -171,4 +180,5 @@ int	main(int ac, char **av)
     create_config();
   else
     get_path(fd);
+  display_conf();
 }
