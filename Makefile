@@ -5,16 +5,16 @@
 ## Login   <gomel_f@epitech.net>
 ## 
 ## Started on  Sun Apr 17 02:47:00 2016 Frédéric GOMEL
-## Last update Tue Apr 19 16:22:34 2016 Frédéric GOMEL
+## Last update Tue Apr 19 16:28:34 2016 Frédéric GOMEL
 ##
 
 NAME1	=	cmp-server
 
-NAME2	=	cmp-client
+NAME2	=	cmp
 
 SRC1	=	server/main.c
 
-SRC2	=
+SRC2	=	
 
 OBJ1	=	$(SRC1:.c=.o)
 
@@ -35,7 +35,7 @@ $(NAME1):	$(OBJ1)
 		$(CC) -o $(NAME1) $(OBJ1)
 
 $(NAME2):	$(OBJ2)
-		$(CC) -o $(NAME2) $(OBJ2) $(LFLAGS)
+		$(CC) -o $(NAME2) $(OBJ2)
 
 clean:
 		$(RM) $(OBJ1) $(OBJ2)
