@@ -5,13 +5,17 @@
 ** Login   <gomel_f@epitech.net>
 **
 ** Started on  Tue Apr 19 18:33:03 2016 Frédéric GOMEL
-** Last update Tue Apr 19 18:35:37 2016 Frédéric GOMEL
+** Last update Wed Apr 20 01:10:03 2016 Frédéric GOMEL
 */
 
-#ifndef CMP-SERVER_H_
-#define CMP-SERVER_H_
+#ifndef CMP_SERVER_H_
+#define CMP_SERVER_H_
 
 #define RED "\033[31m"
 #define REINIT "\033[00m"
 
-#endif /* !CMP-SERVER_H_ */
+int	lang;
+char	*path_music;
+int	port;
+
+#endif /* !CMP_SERVER_H_ */
