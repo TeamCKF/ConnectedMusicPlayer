@@ -5,7 +5,7 @@
 ** Login   <gomel_f@epitech.net>
 **
 ** Started on  Tue Apr 19 15:37:59 2016 Frédéric GOMEL
-** Last update Tue Apr 19 17:45:43 2016 Frédéric GOMEL
+** Last update Tue Apr 19 17:48:06 2016 guillaume
 */
 
 #include <fmod.h>
@@ -23,9 +23,9 @@ int  port;
 
 void	credit_display()
 {
-  printf("\033[05m\033[33m==============TEAMCKF==============\n");
-  printf("\033[31m        property of TeamCKF\n");
-  printf("\033[33m==============TEAMCKF==============\n");
+  printf("\033[05m\033[33m==========================================\n");
+  printf("\033[31m CMP-Server.  Copyright (c) TeamCKF 2016.\n");
+  printf("\033[33m==========================================\n");
 }
 
 void	create_config()
