@@ -5,7 +5,7 @@
 ** Login   <gomel_f@epitech.net>
 **
 ** Started on  Tue Apr 19 15:37:59 2016 Frédéric GOMEL
-** Last update Tue Apr 19 17:42:28 2016 Frédéric GOMEL
+** Last update Tue Apr 19 17:45:43 2016 Frédéric GOMEL
 */
 
 #include <fmod.h>
@@ -55,7 +55,6 @@ void	create_config()
 	  port = 1729;
 	  strcpy(portp, "1729");
 	}
-      printf("%i\n", port);
     }
   else
     {
@@ -70,7 +69,6 @@ void	create_config()
 	  port = 1729;
 	  strcpy(portp, "1729");
 	}
-      printf("%i\n", port);
     }
   fd = open("config.cfg", O_CREAT | O_WRONLY, 0660);
   write(fd, "LANG=", 5);
