@@ -5,7 +5,7 @@
 ** Login   <gomel_f@epitech.net>
 **
 ** Started on  Tue Apr 19 15:37:59 2016 Frédéric GOMEL
-** Last update Wed Apr 20 15:32:07 2016 Frédéric GOMEL
+** Last update Wed Apr 20 17:24:09 2016 Frédéric GOMEL
 */
 
 #include <fmod.h>
@@ -53,7 +53,7 @@ void	get_parameters(int fd)
   port = atoi(portp);
 }
 
-int	main(int ac, char **av)
+int	main()
 {
   int fd;
 
@@ -63,4 +63,5 @@ int	main(int ac, char **av)
   else
     get_parameters(fd);
   display_conf();
+  return (0);
 }

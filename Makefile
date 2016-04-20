@@ -5,7 +5,7 @@
 ## Login   <gomel_f@epitech.net>
 ## 
 ## Started on  Sun Apr 17 02:47:00 2016 Frédéric GOMEL
-## Last update Wed Apr 20 16:46:13 2016 Frédéric GOMEL
+## Last update Wed Apr 20 17:23:55 2016 Frédéric GOMEL
 ##
 
 NAME1	=	cmp-server
@@ -30,8 +30,8 @@ OBJ1	=	$(SRC1:.c=.o)
 
 OBJ2	=	$(SRC2:.c=.o)
 
-#CFLAGS	+=	-Wextra -Wall -Werror
-#CFLAGS +=	-ansi	-pedantic
+CFLAGS	+=	-Wextra -Wall -Werror
+CFLAGS +=	-ansi	-pedantic
 CFLAGS	+=	-Iinclude/
 #LFLAGS	=	-L/api/lowlevel/lib/x86_64 -lfmod
 

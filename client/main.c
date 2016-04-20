@@ -5,7 +5,7 @@
 ** Login   <gomel_f@epitech.net>
 **
 ** Started on  Wed Apr 20 01:18:58 2016 Frédéric GOMEL
-** Last update Wed Apr 20 16:51:03 2016 Frédéric GOMEL
+** Last update Wed Apr 20 17:31:00 2016 Frédéric GOMEL
 */
 
 #include <stdio.h>
@@ -14,7 +14,7 @@
 #include "get_next_line.h"
 #include "cmp-client.h"
 
-void	get_parameters(int fd)
+void	read_conf(int fd)
 {
   char	*para;
   char	*portp;
@@ -47,7 +47,6 @@ void	get_parameters(int fd)
     i++;
   while (para[i] != '\0')
     adress[j++] = para[i++];
-  port = atoi(portp);
 }
 
 int	main()
@@ -57,8 +56,9 @@ int	main()
   copyright_display();
   if ((fd = open("config.ini", O_RDONLY)) == -1)
     create_config();
-  // else
-    //    read_conf(fd);
+  else
+    read_conf(fd);
+  display_conf();
 
   return (0);
 }
