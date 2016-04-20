@@ -5,7 +5,7 @@
 ** Login   <guillaume@epitech.net>
 **
 ** Started on  Wed Apr 20 16:25:29 2016 guillaume
-** Last update Wed Apr 20 17:00:08 2016 guillaume
+** Last update Wed Apr 20 17:16:23 2016 guillaume
 */
 
 #include <dirent.h>
@@ -55,18 +55,48 @@ void	play()
 
   if (!music.isplaying)
     {
-      if ((file = readdir(rep)) == NULL)
+      if ((music.file = readdir(music.rep)) == NULL)
 	{
-	  rewinddir(rep);
-	  if ((file = readdir(rep)) == NULL)
+	  rewinddir(music.rep);
+	  if ((music.file = readdir(music.rep)) == NULL)
 	    exit(-1);
 	}
       FMOD_Sound_Release(music.music);
-      result = FMOD_System_CreateSound(music.system, file->d_name, FMOD_SOFTWARE | FMOD_2D | FMOD_CREATESTREAM, 0, &music.music);
+      result = FMOD_System_CreateSound(music.system, music.file->d_name, FMOD_SOFTWARE | FMOD_2D | FMOD_CREATESTREAM, 0, &music.music);
       if (result == FMOD_OK)
-	FMOD_System_PlaySound(system, FMOD_CHANNEL_FREE, music, 0, &channel);
+	FMOD_System_PlaySound(music.system, FMOD_CHANNEL_FREE, music.music, 0, &music.channel);
+    }
+  if (kbhit())
+    {
+      key = getch();
+
+      if (key == 'q')
+	quit();
+      else if (key == 'n')
+	change_music(1);
+      else if (key == 'p')
+	change_music(-1);
+      else if (key == 's')
+	pause();
     }
 
+}
+
+void	change_music(int etat)
+{
+  if (etat == 1)
+    {
+      if ((music.file = readdir(music.rep)) == NULL)
+	{
+	  rewinddir(music.rep);
+	  if ((music.file = readdir(music.rep)) == NULL)
+	    exit(-1);
+	}
+      FMOD_Sound_Release(music.music);
+      result = FMOD_System_CreateSound(music.system, music.file->d_name, FMOD_SOFTWARE | FMOD_2D | FMOD_CREATESTREAM, 0, &music.music);
+      if (result == FMOD_OK)
+	FMOD_System_PlaySound(music.system, FMOD_CHANNEL_FREE, music.music, 0, &music.channel);
+    }
 }
 
 int	main()
