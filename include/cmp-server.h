@@ -5,11 +5,14 @@
 ** Login   <gomel_f@epitech.net>
 **
 ** Started on  Tue Apr 19 18:33:03 2016 Frédéric GOMEL
-** Last update Wed Apr 20 17:00:06 2016 guillaume
+** Last update Wed Apr 20 17:11:04 2016 Frédéric GOMEL
 */
 
 #ifndef CMP_SERVER_H_
 #define CMP_SERVER_H_
+
+#include <fmod.h>
+#include <dirent.h>
 
 #define RED "\033[31m"
 #define REINIT "\033[00m"
