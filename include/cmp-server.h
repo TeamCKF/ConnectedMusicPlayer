@@ -5,7 +5,7 @@
 ** Login   <gomel_f@epitech.net>
 **
 ** Started on  Tue Apr 19 18:33:03 2016 Frédéric GOMEL
-** Last update Wed Apr 20 01:10:03 2016 Frédéric GOMEL
+** Last update Wed Apr 20 15:44:23 2016 Frédéric GOMEL
 */
 
 #ifndef CMP_SERVER_H_
@@ -17,5 +17,26 @@
 int	lang;
 char	*path_music;
 int	port;
+
+int	main();
+
+/* Fonctions "outils" */
+
+int	equal_char(char*, char*);
+int	lenght(char*);
+
+/* Fonctions d'affichage */
+
+void	copyright_display();
+void	display_conf();
+
+/* Fonctions pour la configuration */
+
+void	get_parameters(int);
+void	create_config();
+void	set_port();
+void	set_language();
+void	set_path();
+void	set_file();
 
 #endif /* !CMP_SERVER_H_ */

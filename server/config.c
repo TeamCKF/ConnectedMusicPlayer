@@ -6,11 +6,13 @@
 ** Login   <gomel_f@epitech.net>
 **
 ** Started on  Wed Apr 20 00:54:59 2016 Frédéric GOMEL
-** Last update Wed Apr 20 01:16:59 2016 Frédéric GOMEL
+** Last update Wed Apr 20 16:05:09 2016 Frédéric GOMEL
 */
 
 #include <string.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
 #include <fcntl.h>
 #include "get_next_line.h"
 #include "cmp-server.h"

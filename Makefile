@@ -5,7 +5,7 @@
 ## Login   <gomel_f@epitech.net>
 ## 
 ## Started on  Sun Apr 17 02:47:00 2016 Frédéric GOMEL
-## Last update Wed Apr 20 01:07:34 2016 Frédéric GOMEL
+## Last update Wed Apr 20 15:32:43 2016 Frédéric GOMEL
 ##
 
 NAME1	=	cmp-server
@@ -15,7 +15,9 @@ NAME2	=	cmp
 SRC1	=	server/main.c \
 		server/get_next_line.c \
 		server/my_realloc.c \
-		server/config.c
+		server/config.c \
+		server/display.c \
+		server/tools.c
 
 SRC2	=	
 
