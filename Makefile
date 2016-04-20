@@ -5,7 +5,7 @@
 ## Login   <gomel_f@epitech.net>
 ## 
 ## Started on  Sun Apr 17 02:47:00 2016 Frédéric GOMEL
-## Last update Wed Apr 20 15:32:43 2016 Frédéric GOMEL
+## Last update Wed Apr 20 16:46:13 2016 Frédéric GOMEL
 ##
 
 NAME1	=	cmp-server
@@ -19,7 +19,12 @@ SRC1	=	server/main.c \
 		server/display.c \
 		server/tools.c
 
-SRC2	=	
+SRC2	=	client/main.c \
+		client/config.c \
+		client/display.c \
+		client/my_realloc.c \
+		client/get_next_line.c \
+		client/tools.c
 
 OBJ1	=	$(SRC1:.c=.o)
 
@@ -34,7 +39,7 @@ CC	=	gcc
 
 RM	=	rm -f
 
-all:	$(NAME1)
+all:	$(NAME1) $(NAME2)
 
 $(NAME1):	$(OBJ1)
 		$(CC) -o $(NAME1) $(OBJ1)
