@@ -5,7 +5,7 @@
 ## Login   <gomel_f@epitech.net>
 ## 
 ## Started on  Sun Apr 17 02:47:00 2016 Frédéric GOMEL
-## Last update Thu Apr 21 15:08:03 2016 guillaume
+## Last update Thu Apr 21 16:54:40 2016 guillaume
 ##
 
 NAME1	=	cmp-server
@@ -18,7 +18,9 @@ SRC1	=	server/main.c \
 		server/config.c \
 		server/display.c \
 		server/tools.c \
-		server/play.c
+		server/play.c \
+		server/prev_music.c \
+		server/load_playlist.c
 
 SRC2	=	client/main.c \
 		client/config.c \

@@ -5,7 +5,7 @@
 ** Login   <gomel_f@epitech.net>
 **
 ** Started on  Tue Apr 19 18:33:03 2016 Frédéric GOMEL
-** Last update Thu Apr 21 16:31:17 2016 Frédéric GOMEL
+** Last update Thu Apr 21 17:25:10 2016 guillaume
 */
 
 #ifndef CMP_SERVER_H_
@@ -52,6 +52,7 @@ typedef struct	s_music
   FMOD_BOOL	isplaying;
   DIR		*rep;
   char		**playlist;
+  int		nbsong;
   struct dirent	*file;
 }		t_music;
 
@@ -81,6 +82,8 @@ void	set_file();
 /* Fonctions pour la lecture de la musique */
 
 void	init_system();
+void	load_playlist();
+char	**alloc(char **str, int nb);
 void	checkerror(FMOD_RESULT result);
 int	play();
 

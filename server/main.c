@@ -5,7 +5,7 @@
 ** Login   <gomel_f@epitech.net>
 **
 ** Started on  Tue Apr 19 15:37:59 2016 Frédéric GOMEL
-** Last update Thu Apr 21 15:56:35 2016 Frédéric GOMEL
+** Last update Thu Apr 21 17:19:04 2016 guillaume
 */
 
 #if defined (WIN32)
@@ -79,10 +79,11 @@ int	main()
     get_parameters(fd);
   display_conf();
   init_system();
-  while (play() != 0);
-
+  //while (42)
+  //play();
+  /*
 #if defined (WIN32)
   WSACleanup();
-#endif
+  #endif*/
   return (0);
 }

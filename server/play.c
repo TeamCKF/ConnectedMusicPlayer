@@ -5,7 +5,7 @@
 ** Login   <guillaume@epitech.net>
 **
 ** Started on  Wed Apr 20 16:25:29 2016 guillaume
-** Last update Thu Apr 21 15:29:24 2016 guillaume
+** Last update Thu Apr 21 17:24:29 2016 guillaume
 */
 
 #include <dirent.h>
@@ -41,11 +41,11 @@ void	init_system()
       printf("Error : %s\n", strerror(errno));
       exit(-1);
     }
-  chdir(path_music);
-  return ;
+  load_playlist();
+  return (0);
 }
 
-void	play()
+/*int	play()
 {
   FMOD_RESULT	result;
   int	key;
@@ -74,17 +74,26 @@ void	play()
       key = getch();
 
       if (key == 'q')
-	exit(0);
+	quit();
       else if (key == 'n')
 	next_music();
       else if (key == 'p')
 	prev_music();
-      /*else if (key == 's')
-	pause();*/
+      else if (key == 's')
+	pause();
     }
-  return ;
-}
+  return (0);
+  }*/
 
+void	quit()
+{
+  closedir(music.rep);
+  FMOD_Sound_Release(music.music);
+  FMOD_System_Close(music.system);
+  FMOD_System_Release(music.system);
+  exit(0);
+}
+/*
 void	next_music()
 {
   FMOD_RESULT	result;
@@ -106,9 +115,9 @@ void	next_music()
   system("clear");
   printf("%s\n", music.file->d_name);
   return ;
-}
+  }*/
 
-void	prev_music()
+/*void	prev_music()
 {
   FMOD_RESULT	result;
   long int	cursor;
@@ -118,19 +127,19 @@ void	prev_music()
   FMOD_Sound_Release(music.music);
   while (result != FMOD_OK)
     {
-      cursor--;
+      //cursor--;
       if (cursor < 0)
 	{
 	  while ((music.file = readdir(music.rep)) == NULL);
 	  cursor = telldir(music.rep);
 	}
-      seekdir(music.rep, cursor);
+      seekdir(music.rep, 6);
       music.file = readdir(music.rep);
       result = FMOD_System_CreateSound(music.system, music.file->d_name, FMOD_SOFTWARE | FMOD_2D | FMOD_CREATESTREAM, 0, &music.music);
       if (result == FMOD_OK)
 	FMOD_System_PlaySound(music.system, FMOD_CHANNEL_FREE, music.music, 0, &music.channel);
     }
   system("clear");
-  printf("%s\n", music.file->d_name);
+  printf("%d    %s\n", cursor, music.file->d_name);
   return ;
-}
+  }*/
