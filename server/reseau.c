@@ -5,7 +5,7 @@
 ** Login   <gomel_f@epitech.net>
 **
 ** Started on  Thu Apr 21 15:33:31 2016 Frédéric GOMEL
-** Last update Thu Apr 21 16:30:49 2016 Frédéric GOMEL
+** Last update Thu Apr 21 16:41:10 2016 Frédéric GOMEL
 */
 
 #if defined (WIN32)
@@ -39,7 +39,7 @@ int	main()
 {
   int	port = 1729;
   int	erreur;
-  int	sockerreur;
+  int	sock_err;
 
 #if defined (WIN32)
   WSADATA WSAData;
@@ -63,14 +63,41 @@ int	main()
       sock = socket(AF_INET, SOCK_STREAM, 0);
       if (sock != INVALID_SOCKET)
 	{
-	  printf("");
+	  printf("Socket N°%d ouvert en TCP/IP\n", sock);
+	  sin.sin_addr.s_addr = htonl(INADDR_ANY);
+	  sin.sin_family = AF_INET;
+	  sin.sin_port = htons(port);
+	  sock_err = bind(sock, (SOCKADDR*)&sin, sinsize);
+
+	  if (sock_err != SOCKET_ERROR)
+	    {
+	      sock_err = listen(sock, 5);
+	      printf("Ecoute du port %d...\n", port);
+
+	      if (sock_err != SOCKET_ERROR)
+		{
+		  printf("Ecoute de client sur le port %d...\n", port);
+		  csock = accept(sock, (SOCKADDR*)&csin, &csinsize);
+		  printf("Un client se connecte avec la socket %d de %s:%d\n", csock, inet_ntoa(csin.sin_addr), htons(csin.sin_port));
+		}
+	      else
+		perror("listen");
+	    }
+	  perror("bind");
 	}
+
+      printf("Fermeture du socket client\n");
+      close(csock);
+      printf("Fermeture de la socket serveur\n");
+      close(sock);
+      printf("Fermeture de port terminée\n");
     }
   else
     perror("socket");
 
-
 #if defined (WIN32)
   WSACleanup();
 #endif
+
+  return (0);
 }
