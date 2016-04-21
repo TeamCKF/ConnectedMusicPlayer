@@ -5,11 +5,34 @@
 ** Login   <gomel_f@epitech.net>
 **
 ** Started on  Tue Apr 19 18:33:03 2016 Frédéric GOMEL
-** Last update Wed Apr 20 17:11:04 2016 Frédéric GOMEL
+** Last update Thu Apr 21 15:57:21 2016 Frédéric GOMEL
 */
 
 #ifndef CMP_SERVER_H_
 #define CMP_SERVER_H_
+
+#if defined (WIN32)
+
+#include <winsock2.h>
+
+typedef int socketlen_t;
+
+#elif defined (linux)
+
+#include <sys/types.h>
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <arpa/inet.h>
+#include <unistd.h>
+
+#define INVALID_SOCKET -1
+#define SOCKET_ERROR -1
+
+typedef int SOCKET;
+typedef struct sockaddr_in SOCKADRR_IN;
+typedef struct sockaddr	SOCKADRR;
+
+#endif
 
 #include <fmod.h>
 #include <dirent.h>
@@ -58,6 +81,6 @@ void	set_file();
 
 void	init_system();
 void	checkerror(FMOD_RESULT result);
-void	play();
+int	play();
 
 #endif /* !CMP_SERVER_H_ */

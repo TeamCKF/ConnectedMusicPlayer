@@ -5,8 +5,22 @@
 ** Login   <gomel_f@epitech.net>
 **
 ** Started on  Tue Apr 19 15:37:59 2016 Frédéric GOMEL
-** Last update Thu Apr 21 15:34:50 2016 Frédéric GOMEL
+** Last update Thu Apr 21 15:56:35 2016 Frédéric GOMEL
 */
+
+#if defined (WIN32)
+
+#include <winsock2.h>
+
+#elif defined (linux)
+
+#include <sys/types.h>
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <arpa/inet.h>
+#include <unistd.h>
+
+#endif
 
 #include <fmod.h>
 #include <stdio.h>
@@ -65,7 +79,10 @@ int	main()
     get_parameters(fd);
   display_conf();
   init_system();
-  while (42)
-    play();
+  while (play() != 0);
+
+#if defined (WIN32)
+  WSACleanup();
+#endif
   return (0);
 }
