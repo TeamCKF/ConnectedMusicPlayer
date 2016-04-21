@@ -6,7 +6,7 @@
 ** Login   <gomel_f@epitech.net>
 **
 ** Started on  Wed Apr 20 00:54:59 2016 Frédéric GOMEL
-** Last update Wed Apr 20 16:31:36 2016 Frédéric GOMEL
+** Last update Thu Apr 21 15:34:18 2016 Frédéric GOMEL
 */
 
 #include <string.h>
@@ -76,6 +76,7 @@ void	set_file()
   write(fd, path_music, strlen(path_music));
   write(fd, "\nPORT=", 6);
   write(fd, portp, strlen(portp));
+  close(fd);
 }
 
 void	create_config()

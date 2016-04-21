@@ -5,7 +5,7 @@
 ** Login   <gomel_f@epitech.net>
 **
 ** Started on  Tue Apr 19 15:37:59 2016 Frédéric GOMEL
-** Last update Thu Apr 21 15:01:11 2016 guillaume
+** Last update Thu Apr 21 15:34:50 2016 Frédéric GOMEL
 */
 
 #include <fmod.h>
@@ -51,6 +51,7 @@ void	get_parameters(int fd)
   while (para[i] != '\0')
     portp[j++] = para[i++];
   port = atoi(portp);
+  close(fd);
 }
 
 int	main()
