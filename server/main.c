@@ -5,7 +5,7 @@
 ** Login   <gomel_f@epitech.net>
 **
 ** Started on  Tue Apr 19 15:37:59 2016 Frédéric GOMEL
-** Last update Wed Apr 20 17:24:09 2016 Frédéric GOMEL
+** Last update Thu Apr 21 15:01:11 2016 guillaume
 */
 
 #include <fmod.h>
@@ -63,5 +63,8 @@ int	main()
   else
     get_parameters(fd);
   display_conf();
+  init_system();
+  while (42)
+    play();
   return (0);
 }

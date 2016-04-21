@@ -5,7 +5,7 @@
 ** Login   <guillaume@epitech.net>
 **
 ** Started on  Wed Apr 20 16:25:29 2016 guillaume
-** Last update Wed Apr 20 17:34:02 2016 guillaume
+** Last update Thu Apr 21 15:29:24 2016 guillaume
 */
 
 #include <dirent.h>
@@ -31,11 +31,9 @@ void	init_system()
   FMOD_RESULT	result;
 
   result = FMOD_System_Create(&music.system);
-  printf("a\n");
   checkerror(result);
 
   result = FMOD_System_Init(music.system, 32, FMOD_INIT_NORMAL, NULL);
-  printf("b\n");
   checkerror(result);
 
   if ((music.rep = opendir(path_music)) == NULL)
@@ -62,13 +60,14 @@ void	play()
 	  if ((music.file = readdir(music.rep)) == NULL)
 	    {
 	      rewinddir(music.rep);
-	      if ((music.file = readdir(music.rep)) == NULL)
-		exit(-1);
+	      music.file = readdir(music.rep);
 	    }
 	  FMOD_Sound_Release(music.music);
 	  result = FMOD_System_CreateSound(music.system, music.file->d_name, FMOD_SOFTWARE | FMOD_2D | FMOD_CREATESTREAM, 0, &music.music);
 	}
       FMOD_System_PlaySound(music.system, FMOD_CHANNEL_FREE, music.music, 0, &music.channel);
+      system("clear");
+      printf("%s\n", music.file->d_name);
     }
   if (kbhit())
     {
@@ -76,21 +75,23 @@ void	play()
 
       if (key == 'q')
 	exit(0);
-      /*else if (key == 'n')
-	change_music(1);
+      else if (key == 'n')
+	next_music();
       else if (key == 'p')
-	change_music(-1);
-      else if (key == 's')
-      pause();*/
+	prev_music();
+      /*else if (key == 's')
+	pause();*/
     }
-
+  return ;
 }
 
-void	change_music(int etat)
+void	next_music()
 {
   FMOD_RESULT	result;
 
-  if (etat == 1)
+  FMOD_Sound_Release(music.music);
+  result = -1;
+  while (result != FMOD_OK)
     {
       if ((music.file = readdir(music.rep)) == NULL)
 	{
@@ -98,17 +99,38 @@ void	change_music(int etat)
 	  if ((music.file = readdir(music.rep)) == NULL)
 	    exit(-1);
 	}
-      FMOD_Sound_Release(music.music);
       result = FMOD_System_CreateSound(music.system, music.file->d_name, FMOD_SOFTWARE | FMOD_2D | FMOD_CREATESTREAM, 0, &music.music);
       if (result == FMOD_OK)
 	FMOD_System_PlaySound(music.system, FMOD_CHANNEL_FREE, music.music, 0, &music.channel);
     }
+  system("clear");
+  printf("%s\n", music.file->d_name);
+  return ;
 }
 
-int	main()
+void	prev_music()
 {
-  path_music = "yolo";
-  init_system();
-  while (1)
-    play();
+  FMOD_RESULT	result;
+  long int	cursor;
+
+  result = -1;
+  cursor = telldir(music.rep);
+  FMOD_Sound_Release(music.music);
+  while (result != FMOD_OK)
+    {
+      cursor--;
+      if (cursor < 0)
+	{
+	  while ((music.file = readdir(music.rep)) == NULL);
+	  cursor = telldir(music.rep);
+	}
+      seekdir(music.rep, cursor);
+      music.file = readdir(music.rep);
+      result = FMOD_System_CreateSound(music.system, music.file->d_name, FMOD_SOFTWARE | FMOD_2D | FMOD_CREATESTREAM, 0, &music.music);
+      if (result == FMOD_OK)
+	FMOD_System_PlaySound(music.system, FMOD_CHANNEL_FREE, music.music, 0, &music.channel);
+    }
+  system("clear");
+  printf("%s\n", music.file->d_name);
+  return ;
 }
