@@ -6,7 +6,7 @@
 ** Login   <gomel_f@epitech.net>
 **
 ** Started on  Thu Apr 21 17:23:29 2016 Frédéric GOMEL
-** Last update Fri Apr 22 00:29:50 2016 Frédéric GOMEL
+** Last update Fri Apr 22 01:10:12 2016 Frédéric GOMEL
 */
 
 #if defined (WIN32)
@@ -81,7 +81,7 @@ int	main()
 		}
 	      if (cmd == 'n' || cmd == 'p' || cmd == 's')
 		{
-		  sock_err = send(sock, cmd, 1, 0);
+		  sock_err = send(sock, &cmd, 1, 0);
 		  if (sock_err != SOCKET_ERROR)
 		    printf("Caractère envoyé : %c\n", cmd);
 		  else
