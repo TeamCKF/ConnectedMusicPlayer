@@ -5,7 +5,7 @@
 ** Login   <gomel_f@epitech.net>
 **
 ** Started on  Thu Apr 21 15:33:31 2016 Frédéric GOMEL
-** Last update Thu Apr 21 16:41:10 2016 Frédéric GOMEL
+** Last update Fri Apr 22 00:28:22 2016 Frédéric GOMEL
 */
 
 #if defined (WIN32)
@@ -34,9 +34,11 @@ typedef struct sockaddr	SOCKADDR;
 
 #include <stdio.h>
 #include <stdlib.h>
+/* #include "cmp-server.h" */
 
 int	main()
 {
+  char	cmd;
   int	port = 1729;
   int	erreur;
   int	sock_err;
@@ -79,11 +81,14 @@ int	main()
 		  printf("Ecoute de client sur le port %d...\n", port);
 		  csock = accept(sock, (SOCKADDR*)&csin, &csinsize);
 		  printf("Un client se connecte avec la socket %d de %s:%d\n", csock, inet_ntoa(csin.sin_addr), htons(csin.sin_port));
+		  if (recv(csock, cmd, 1, 0) != SOCKET_ERROR)
+		    printf("Commande : %c\n", cmd);
 		}
 	      else
 		perror("listen");
 	    }
-	  perror("bind");
+	  else
+	    perror("bind");
 	}
 
       printf("Fermeture du socket client\n");

@@ -5,7 +5,7 @@
 ** Login   <gomel_f@epitech.net>
 **
 ** Started on  Tue Apr 19 18:33:03 2016 Frédéric GOMEL
-** Last update Thu Apr 21 17:25:10 2016 guillaume
+** Last update Fri Apr 22 00:20:09 2016 Frédéric GOMEL
 */
 
 #ifndef CMP_SERVER_H_
@@ -43,6 +43,7 @@ typedef struct sockaddr	SOCKADRR;
 int	lang;
 char	*path_music;
 int	port;
+char	cmd;
 
 typedef struct	s_music
 {

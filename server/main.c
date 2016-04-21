@@ -5,7 +5,7 @@
 ** Login   <gomel_f@epitech.net>
 **
 ** Started on  Tue Apr 19 15:37:59 2016 Frédéric GOMEL
-** Last update Thu Apr 21 17:19:04 2016 guillaume
+** Last update Fri Apr 22 00:25:06 2016 Frédéric GOMEL
 */
 
 #if defined (WIN32)
@@ -29,6 +29,7 @@
 #include <fcntl.h>
 #include <dirent.h>
 #include <sys/types.h>
+#include <pthread.h>
 #include "get_next_line.h"
 #include "cmp-server.h"
 
@@ -71,6 +72,7 @@ void	get_parameters(int fd)
 int	main()
 {
   int fd;
+  pthread thread_reseau;
 
   copyright_display();
   if ((fd = open("config.cfg", O_RDONLY)) == -1)
@@ -79,11 +81,12 @@ int	main()
     get_parameters(fd);
   display_conf();
   init_system();
+  pthread_create(&thread_reseau, NULL, reseau, NULL)
   //while (42)
   //play();
-  /*
+
 #if defined (WIN32)
   WSACleanup();
-  #endif*/
+#endif
   return (0);
 }
