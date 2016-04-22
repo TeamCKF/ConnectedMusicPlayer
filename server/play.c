@@ -5,7 +5,7 @@
 ** Login   <guillaume@epitech.net>
 **
 ** Started on  Wed Apr 20 16:25:29 2016 guillaume
-** Last update Fri Apr 22 02:20:54 2016 Frédéric GOMEL
+** Last update Fri Apr 22 13:35:42 2016 Frédéric GOMEL
 */
 
 #include <dirent.h>
@@ -70,15 +70,15 @@ void	init_system()
     }
   if (kbhit())
     {
-      key = getch();
+      cmd = getch();
 
-      if (key == 'q')
+      if (cmd == 'q')
 	quit();
-      else if (key == 'n')
+      else if (cmd == 'n')
 	next_music();
-      else if (key == 'p')
+      else if (cmd == 'p')
 	prev_music();
-      else if (key == 's')
+      else if (cmd == 's')
 	pause();
     }
   return (0);
