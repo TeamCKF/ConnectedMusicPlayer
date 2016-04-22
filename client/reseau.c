@@ -6,7 +6,7 @@
 ** Login   <gomel_f@epitech.net>
 **
 ** Started on  Thu Apr 21 17:23:29 2016 Frédéric GOMEL
-** Last update Fri Apr 22 23:23:48 2016 Frédéric GOMEL
+** Last update Fri Apr 22 23:25:00 2016 Frédéric GOMEL
 */
 
 #if defined (WIN32)
@@ -91,7 +91,7 @@ void	reseau()
 		      else
 			printf("Erreur de transmission...\n");
 		    }
-		  cmd = NULL;
+		  cmd = '\0';
 		}
 		  shutdown(sock, 2);
 		}
