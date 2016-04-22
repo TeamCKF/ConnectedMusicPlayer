@@ -5,7 +5,7 @@
 ** Login   <gomel_f@epitech.net>
 **
 ** Started on  Tue Apr 19 15:37:59 2016 Frédéric GOMEL
-** Last update Fri Apr 22 02:31:06 2016 Frédéric GOMEL
+** Last update Fri Apr 22 19:40:45 2016 Frédéric GOMEL
 */
 
 #if defined (WIN32)
@@ -71,7 +71,8 @@ void	get_parameters(int fd)
 
 int	main()
 {
-  int fd;
+  int	fd;
+  int	i;
   pthread_t thread_reseau;
 
   copyright_display();
@@ -82,7 +83,12 @@ int	main()
   display_conf();
   //  init_system();
   pthread_create(&thread_reseau, NULL, reseau, NULL);
-  while (42);
+  while (42)
+    {
+      sleep(5);
+      i++;
+      printf("%i Secondes.\n", i);
+    }
   //play();
 
 #if defined (WIN32)

@@ -6,7 +6,7 @@
 ** Login   <gomel_f@epitech.net>
 **
 ** Started on  Thu Apr 21 17:23:29 2016 Frédéric GOMEL
-** Last update Fri Apr 22 02:44:18 2016 Frédéric GOMEL
+** Last update Fri Apr 22 19:45:21 2016 Frédéric GOMEL
 */
 
 #if defined (WIN32)
@@ -72,22 +72,26 @@ void	reseau()
 		  printf("Connecté à %s sur le port %d\n", inet_ntoa(sin.sin_addr), htons(sin.sin_port));
 		  connected = 1;
 		}
-	      cmd = getch();
-	      if (cmd == 'q')
+	      while (cmd != 'q')
 		{
-		  close(sock);
+		  cmd = getch();
+		  if (cmd == 'q')
+		    {
+		      close(sock);
 #if defined (WIN32)
-		  WSACleanup();
+		      WSACleanup();
 #endif
-		  exit(EXIT_SUCCESS);
+		      exit(EXIT_SUCCESS);
+		    }
+		  if (cmd == 'n' || cmd == 'p' || cmd == 's')
+		    {
+		      sock_err = send(sock, &cmd, 1, 0);
+		      if (sock_err != SOCKET_ERROR)
+			printf("Caractère envoyé : %c\n", cmd);
+		      else
+			printf("Erreur de transmission...\n");
+		    }
 		}
-	      if (cmd == 'n' || cmd == 'p' || cmd == 's')
-		{
-		  sock_err = send(sock, &cmd, 1, 0);
-		  if (sock_err != SOCKET_ERROR)
-		    printf("Caractère envoyé : %c\n", cmd);
-		  else
-		    printf("Erreur de transmission...\n");
 		  shutdown(sock, 2);
 		}
 	      else
@@ -107,4 +111,3 @@ void	reseau()
 #if defined (WIN32)
   WSACleanup();
 #endif
-}

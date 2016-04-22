@@ -5,7 +5,7 @@
 ** Login   <gomel_f@epitech.net>
 **
 ** Started on  Thu Apr 21 15:33:31 2016 Frédéric GOMEL
-** Last update Fri Apr 22 03:20:36 2016 Frédéric GOMEL
+** Last update Fri Apr 22 19:44:57 2016 Frédéric GOMEL
 */
 
 #if defined (WIN32)
@@ -93,7 +93,7 @@ void	reseau()
 		  printf("Ecoute de client sur le port %d...\n", port);
 		  csock = accept(sock, (SOCKADDR*)&csin, &csinsize);
 		  printf("Un client se connecte avec la socket %d de %s:%d\n", csock, inet_ntoa(csin.sin_addr), htons(csin.sin_port));
-		  if (recv(csock, &cmd, 1, 0) != SOCKET_ERROR)
+		  while (recv(csock, &cmd, 1, 0) != SOCKET_ERROR)
 		    printf("Commande : %c\n", cmd);
 		}
 	      else

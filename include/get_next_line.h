@@ -5,7 +5,7 @@
 ** Login   <mineshot03@epitech.net>
 **
 ** Started on  Thu Mar 10 14:22:44 2016 Mineshot03
-** Last update Tue Apr 19 18:27:57 2016 root
+** Last update Fri Apr 22 19:46:18 2016 Frédéric GOMEL
 */
 
 #ifndef READ_SIZE
