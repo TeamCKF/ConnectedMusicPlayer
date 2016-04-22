@@ -5,7 +5,7 @@
 ** Login   <guillaume@epitech.net>
 **
 ** Started on  Wed Apr 20 16:25:29 2016 guillaume
-** Last update Thu Apr 21 17:24:29 2016 guillaume
+** Last update Fri Apr 22 02:20:54 2016 Frédéric GOMEL
 */
 
 #include <dirent.h>
@@ -42,7 +42,6 @@ void	init_system()
       exit(-1);
     }
   load_playlist();
-  return (0);
 }
 
 /*int	play()

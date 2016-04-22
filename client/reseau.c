@@ -6,7 +6,7 @@
 ** Login   <gomel_f@epitech.net>
 **
 ** Started on  Thu Apr 21 17:23:29 2016 Frédéric GOMEL
-** Last update Fri Apr 22 01:10:12 2016 Frédéric GOMEL
+** Last update Fri Apr 22 02:24:04 2016 Frédéric GOMEL
 */
 
 #if defined (WIN32)
@@ -34,10 +34,11 @@ typedef struct sockaddr	SOCKADDR;
 
 #include <stdio.h>
 #include <stdlib.h>
+#include "wincompat.h"
+#include "cmp-client.h"
 
-int	main()
+void	reseau()
 {
-  int	port = 1729;
   int	erreur;
   int	sock_err;
   int	connected;
@@ -55,11 +56,12 @@ int	main()
 
   while (42)
     {
+      sleep(1);
       if (!erreur)
 	{
 	  sock = socket(AF_INET, SOCK_STREAM, 0);
 
-	  sin.sin_addr.s_addr = inet_addr("127.0.0.1");
+	  sin.sin_addr.s_addr = inet_addr(adress);
 	  sin.sin_family = AF_INET;
 	  sin.sin_port = htons(port);
 
@@ -70,7 +72,7 @@ int	main()
 		  printf("Connecté à %s sur le port %d\n", inet_ntoa(sin.sin_addr), htons(sin.sin_port));
 		  connected = 1;
 		}
-	      cmd = getchar();
+	      cmd = getch();
 	      if (cmd == 'q')
 		{
 		  close(sock);
@@ -92,8 +94,11 @@ int	main()
 	    }
 	  else
 	    {
-	      connected = 0;
-	      printf("Impossible de se connecter\n");
+	      if (connected != 0)
+		{
+		  connected = 0;
+		  printf("Impossible de se connecter\n");
+		}
 	    }
 	  close(sock);
 	}
@@ -101,6 +106,4 @@ int	main()
 #if defined (WIN32)
   WSACleanup();
 #endif
-
-  return (EXIT_SUCCESS);
 }

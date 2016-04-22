@@ -5,7 +5,7 @@
 ## Login   <gomel_f@epitech.net>
 ## 
 ## Started on  Sun Apr 17 02:47:00 2016 Frédéric GOMEL
-## Last update Thu Apr 21 16:54:40 2016 guillaume
+## Last update Fri Apr 22 02:13:05 2016 Frédéric GOMEL
 ##
 
 NAME1	=	cmp-server
@@ -20,14 +20,16 @@ SRC1	=	server/main.c \
 		server/tools.c \
 		server/play.c \
 		server/prev_music.c \
-		server/load_playlist.c
+		server/load_playlist.c \
+		server/reseau.c
 
 SRC2	=	client/main.c \
 		client/config.c \
 		client/display.c \
 		client/my_realloc.c \
 		client/get_next_line.c \
-		client/tools.c
+		client/tools.c \
+		client/reseau.c
 
 OBJ1	=	$(SRC1:.c=.o)
 
@@ -36,7 +38,7 @@ OBJ2	=	$(SRC2:.c=.o)
 #CFLAGS	+=	-Wextra -Wall -Werror
 #CFLAGS +=	-ansi	-pedantic
 CFLAGS	+=	-Iinclude/
-LFLAGS	=	-Llib/ -lfmodex64
+LFLAGS	=	-Llib/ -lfmodex64 -lpthread
 
 CC	=	gcc
 

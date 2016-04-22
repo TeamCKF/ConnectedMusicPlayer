@@ -5,9 +5,10 @@
 ** Login   <guillaume@epitech.net>
 **
 ** Started on  Thu Apr 21 16:35:31 2016 guillaume
-** Last update Thu Apr 21 17:28:15 2016 guillaume
+** Last update Fri Apr 22 02:20:03 2016 Frédéric GOMEL
 */
 
+#include <stdio.h>
 #include <stdlib.h>
 #include <dirent.h>
 #include <sys/types.h>

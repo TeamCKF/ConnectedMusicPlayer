@@ -5,7 +5,7 @@
 ** Login   <gomel_f@epitech.net>
 **
 ** Started on  Wed Apr 20 01:18:58 2016 Frédéric GOMEL
-** Last update Fri Apr 22 00:03:10 2016 Frédéric GOMEL
+** Last update Fri Apr 22 02:12:15 2016 Frédéric GOMEL
 */
 
 #include <stdio.h>
@@ -60,7 +60,6 @@ int	main()
   else
     read_conf(fd);
   display_conf();
-  cmd = getchar();
   reseau();
   return (0);
 }

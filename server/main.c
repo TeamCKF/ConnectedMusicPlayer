@@ -5,7 +5,7 @@
 ** Login   <gomel_f@epitech.net>
 **
 ** Started on  Tue Apr 19 15:37:59 2016 Frédéric GOMEL
-** Last update Fri Apr 22 01:09:28 2016 Frédéric GOMEL
+** Last update Fri Apr 22 02:25:07 2016 Frédéric GOMEL
 */
 
 #if defined (WIN32)
@@ -72,7 +72,7 @@ void	get_parameters(int fd)
 int	main()
 {
   int fd;
-  pthread thread_reseau;
+  pthread_t thread_reseau;
 
   copyright_display();
   if ((fd = open("config.cfg", O_RDONLY)) == -1)
@@ -81,7 +81,7 @@ int	main()
     get_parameters(fd);
   display_conf();
   init_system();
-  //pthread_create(&thread_reseau, NULL, reseau, NULL)
+  pthread_create(&thread_reseau, NULL, reseau, NULL);
   //while (42)
   //play();
 
