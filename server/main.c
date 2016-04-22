@@ -5,7 +5,7 @@
 ** Login   <gomel_f@epitech.net>
 **
 ** Started on  Tue Apr 19 15:37:59 2016 Frédéric GOMEL
-** Last update Fri Apr 22 02:25:07 2016 Frédéric GOMEL
+** Last update Fri Apr 22 02:31:06 2016 Frédéric GOMEL
 */
 
 #if defined (WIN32)
@@ -80,9 +80,9 @@ int	main()
   else
     get_parameters(fd);
   display_conf();
-  init_system();
+  //  init_system();
   pthread_create(&thread_reseau, NULL, reseau, NULL);
-  //while (42)
+  while (42);
   //play();
 
 #if defined (WIN32)
