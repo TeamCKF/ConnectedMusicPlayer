@@ -6,7 +6,7 @@
 ** Login   <gomel_f@epitech.net>
 **
 ** Started on  Thu Apr 21 17:23:29 2016 Frédéric GOMEL
-** Last update Fri Apr 22 02:35:51 2016 Frédéric GOMEL
+** Last update Fri Apr 22 02:44:18 2016 Frédéric GOMEL
 */
 
 #if defined (WIN32)
@@ -88,6 +88,7 @@ void	reseau()
 		    printf("Caractère envoyé : %c\n", cmd);
 		  else
 		    printf("Erreur de transmission...\n");
+		  shutdown(sock, 2);
 		}
 	      else
 		printf("Commande non existante...\n");
