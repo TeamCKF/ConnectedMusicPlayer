@@ -5,7 +5,7 @@
 ** Login   <guillaume@epitech.net>
 **
 ** Started on  Wed Apr 20 16:25:29 2016 guillaume
-** Last update Fri Apr 22 13:35:42 2016 Frédéric GOMEL
+** Last update Sun Apr 24 18:17:26 2016 Frédéric GOMEL
 */
 
 #include <dirent.h>
@@ -44,45 +44,55 @@ void	init_system()
   load_playlist();
 }
 
-/*int	play()
-{
-  FMOD_RESULT	result;
-  int	key;
+/* int	play() */
+/* { */
+/*   FMOD_RESULT	result; */
+/*   int	key; */
 
-  FMOD_Channel_IsPlaying(music.channel, &music.isplaying);
+/*   FMOD_Channel_IsPlaying(music.channel, &music.isplaying); */
 
-  if (!music.isplaying)
-    {
-      result = -1;
-      while (result != FMOD_OK)
-	{
-	  if ((music.file = readdir(music.rep)) == NULL)
-	    {
-	      rewinddir(music.rep);
-	      music.file = readdir(music.rep);
-	    }
-	  FMOD_Sound_Release(music.music);
-	  result = FMOD_System_CreateSound(music.system, music.file->d_name, FMOD_SOFTWARE | FMOD_2D | FMOD_CREATESTREAM, 0, &music.music);
-	}
-      FMOD_System_PlaySound(music.system, FMOD_CHANNEL_FREE, music.music, 0, &music.channel);
-      system("clear");
-      printf("%s\n", music.file->d_name);
-    }
-  if (kbhit())
-    {
-      cmd = getch();
+/*   if (!music.isplaying) */
+/*     { */
+/*       result = -1; */
+/*       while (result != FMOD_OK) */
+/* 	{ */
+/* 	  if ((music.file = readdir(music.rep)) == NULL) */
+/* 	    { */
+/* 	      rewinddir(music.rep); */
+/* 	      music.file = readdir(music.rep); */
+/* 	    } */
+/* 	  FMOD_Sound_Release(music.music); */
+/* 	  result = FMOD_System_CreateSound(music.system, music.file->d_name, FMOD_SOFTWARE | FMOD_2D | FMOD_CREATESTREAM, 0, &music.music); */
+/* 	} */
+/*       FMOD_System_PlaySound(music.system, FMOD_CHANNEL_FREE, music.music, 0, &music.channel); */
+/*       system("clear"); */
+/*       printf("%s\n", music.file->d_name); */
+/*     } */
+/*   if (cmd != '\0') */
+/*     { */
+/*       if (cmd == 'n') */
+/* 	next_music(); */
+/*       else if (cmd == 'p') */
+/* 	prev_music(); */
+/*       else if (cmd == 's') */
+/* 	pause(); */
+/*       cmd = '\0'; */
+/*     } */
+/*   if (kbhit()) */
+/*     { */
+/*       cmd = getch(); */
 
-      if (cmd == 'q')
-	quit();
-      else if (cmd == 'n')
-	next_music();
-      else if (cmd == 'p')
-	prev_music();
-      else if (cmd == 's')
-	pause();
-    }
-  return (0);
-  }*/
+/*       if (cmd == 'q') */
+/* 	quit(); */
+/*       else if (cmd == 'n') */
+/* 	next_music(); */
+/*       else if (cmd == 'p') */
+/* 	prev_music(); */
+/*       else if (cmd == 's') */
+/* 	pause(); */
+/*     } */
+/*   return (0); */
+/* } */
 
 void	quit()
 {

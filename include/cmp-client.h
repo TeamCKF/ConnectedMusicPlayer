@@ -5,7 +5,7 @@
 ** Login   <gomel_f@epitech.net>
 **
 ** Started on  Wed Apr 20 16:32:25 2016 Frédéric GOMEL
-** Last update Fri Apr 22 02:19:24 2016 Frédéric GOMEL
+** Last update Sun Apr 24 18:52:07 2016 Frédéric GOMEL
 */
 
 #ifndef CMP_CLIENT_H_
@@ -22,7 +22,7 @@ int	main();
 
 /* Fonction configuration */
 
-void	create_config();
+void	set_config();
 void	set_language();
 void	set_port();
 void	set_adress();
@@ -42,5 +42,6 @@ void	display_conf();
 /* Fonctions de réseau */
 
 void	reseau();
+char	get_cmd();
 
 #endif /* !CMP_CLIENT_H_ */

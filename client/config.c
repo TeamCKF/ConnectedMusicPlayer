@@ -5,7 +5,7 @@
 ** Login   <gomel_f@epitech.net>
 **
 ** Started on  Wed Apr 20 16:24:15 2016 Frédéric GOMEL
-** Last update Wed Apr 20 16:52:27 2016 Frédéric GOMEL
+** Last update Sun Apr 24 18:52:41 2016 Frédéric GOMEL
 */
 
 #include <fcntl.h>
@@ -61,27 +61,10 @@ void	set_adress()
   adress = gnl(0);
 }
 
-void	create_file()
-{
-  int	fd;
-
-  fd = open("config.ini", O_CREAT | O_WRONLY, 0660);
-  write(fd, "LANG=", 5);
-  if (lang == 1)
-    write(fd, "Fr_fr\n", 6);
-  else
-    write(fd, "En_us\n", 6);
-  write(fd, "PORT=", 6);
-  write(fd, portp, strlen(portp));
-  write(fd, "\nADRESS=", 8);
-  write(fd, adress, strlen(adress));
-}
-
-void	create_config()
+void	set_config()
 {
   printf("\033[32mWelcome to ConnectedMusicPlayer-Client configuration system.\n\033[00m");
   set_language();
   set_port();
   set_adress();
-  create_file();
 }

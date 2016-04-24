@@ -5,7 +5,7 @@
 ** Login   <gomel_f@epitech.net>
 **
 ** Started on  Thu Apr 21 15:33:31 2016 Frédéric GOMEL
-** Last update Fri Apr 22 19:44:57 2016 Frédéric GOMEL
+** Last update Sun Apr 24 02:47:07 2016 Frédéric GOMEL
 */
 
 #if defined (WIN32)
@@ -62,6 +62,8 @@ void	reseau()
   SOCKADDR_IN	csin;
   socklen_t csinsize = sizeof(csin);
 
+  while (42)
+    {
   if (!erreur)
     {
       sock = socket(AF_INET, SOCK_STREAM, 0);
@@ -93,7 +95,7 @@ void	reseau()
 		  printf("Ecoute de client sur le port %d...\n", port);
 		  csock = accept(sock, (SOCKADDR*)&csin, &csinsize);
 		  printf("Un client se connecte avec la socket %d de %s:%d\n", csock, inet_ntoa(csin.sin_addr), htons(csin.sin_port));
-		  while (recv(csock, &cmd, 1, 0) != SOCKET_ERROR)
+		  while (recv(csock, &cmd, 1, 0) != SOCKET_ERROR && cmd != 'q')
 		    printf("Commande : %c\n", cmd);
 		}
 	      else
@@ -111,7 +113,8 @@ void	reseau()
     }
   else
     perror("socket");
-}
 #if defined (WIN32)
   WSACleanup();
 #endif
+}
+}
