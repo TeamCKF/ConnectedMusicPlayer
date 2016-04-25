@@ -5,7 +5,7 @@
 ** Login   <gomel_f@epitech.net>
 **
 ** Started on  Tue Apr 19 18:33:03 2016 Frédéric GOMEL
-** Last update Fri Apr 22 02:20:37 2016 Frédéric GOMEL
+** Last update Mon Apr 25 13:28:43 2016 guillaume
 */
 
 #ifndef CMP_SERVER_H_
@@ -88,6 +88,8 @@ void	load_playlist();
 char	**alloc(char **str, int nb);
 void	checkerror(FMOD_RESULT result);
 int	play();
+int	next_music(int lecture);
+int	prev_music(int lecture);
 
 /* Fonction pour le reseau */
 

@@ -5,7 +5,7 @@
 ## Login   <gomel_f@epitech.net>
 ## 
 ## Started on  Sun Apr 17 02:47:00 2016 Frédéric GOMEL
-## Last update Mon Apr 25 13:09:32 2016 guillaume
+## Last update Mon Apr 25 13:22:06 2016 guillaume
 ##
 
 NAME1	=	cmp-server
@@ -19,7 +19,6 @@ SRC1	=	server/main.c \
 		server/display.c \
 		server/tools.c \
 		server/play.c \
-		server/prev_music.c \
 		server/load_playlist.c \
 		server/reseau.c
 
@@ -38,16 +37,16 @@ OBJ2	=	$(SRC2:.c=.o)
 #CFLAGS	+=	-Wextra -Wall -Werror
 #CFLAGS +=	-ansi	-pedantic
 CFLAGS	+=	-Iinclude/
-LFLAGS	=	-Llib/ -lfmodex64 -lpthread
+LFLAGS	=	-lpthread
 
 CC	=	gcc
 
 RM	=	rm -f
 
-all:	$(NAME1) $(NAME2)
+all:		$(NAME1) $(NAME2)
 
 $(NAME1):	$(OBJ1)
-		$(CC) -o $(NAME1) $(OBJ1) $(LFLAGS)
+		$(CC) -o $(NAME1) $(OBJ1) -L./lib -lfmodex64 $(LFLAGS)
 
 $(NAME2):	$(OBJ2)
 		$(CC) -o $(NAME2) $(OBJ2)
