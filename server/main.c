@@ -5,7 +5,7 @@
 ** Login   <gomel_f@epitech.net>
 **
 ** Started on  Tue Apr 19 15:37:59 2016 Frédéric GOMEL
-** Last update Sun Apr 24 18:57:12 2016 Frédéric GOMEL
+** Last update Mon Apr 25 13:08:57 2016 guillaume
 */
 
 #if defined (WIN32)
@@ -80,10 +80,10 @@ int	main()
   else
     get_parameters(fd);
   display_conf();
-  // init_system();
+  init_system();
   pthread_create(&thread_reseau, NULL, reseau, NULL);
-  while (42);
-    //    play();
+  while (42)
+    play();
 
 #if defined (WIN32)
   WSACleanup();

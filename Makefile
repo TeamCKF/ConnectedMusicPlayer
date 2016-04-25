@@ -5,7 +5,7 @@
 ## Login   <gomel_f@epitech.net>
 ## 
 ## Started on  Sun Apr 17 02:47:00 2016 Frédéric GOMEL
-## Last update Sun Apr 24 18:53:48 2016 Frédéric GOMEL
+## Last update Mon Apr 25 13:09:32 2016 guillaume
 ##
 
 NAME1	=	cmp-server
@@ -38,7 +38,7 @@ OBJ2	=	$(SRC2:.c=.o)
 #CFLAGS	+=	-Wextra -Wall -Werror
 #CFLAGS +=	-ansi	-pedantic
 CFLAGS	+=	-Iinclude/
-LFLAGS	=	-Llib/ -lfmod -lpthread
+LFLAGS	=	-Llib/ -lfmodex64 -lpthread
 
 CC	=	gcc
 
