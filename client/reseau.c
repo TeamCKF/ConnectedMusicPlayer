@@ -109,7 +109,7 @@ void	reseau()
 	  shutdown(sock, 2);
 	}
       else
-	printf("Commande non existante...\n");
+	printf("Echec de connexion\n");
     }
   else
     {

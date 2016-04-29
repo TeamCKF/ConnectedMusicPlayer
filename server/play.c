@@ -69,9 +69,7 @@ int	play()
     }
   if (cmd != '\0')
     {
-      if (cmd == 'q')
-	quit();
-      else if (cmd == 'n')
+      if (cmd == 'n')
 	lecture = next_music(lecture);
       else if (cmd == 'p')
 	lecture = prev_music(lecture);
