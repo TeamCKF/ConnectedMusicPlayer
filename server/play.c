@@ -65,8 +65,17 @@ int	play()
 	  result = FMOD_System_CreateSound(music.system, music.playlist[lecture], FMOD_SOFTWARE | FMOD_2D | FMOD_CREATESTREAM, 0, &music.music);
 	}
       FMOD_System_PlaySound(music.system, FMOD_CHANNEL_FREE, music.music, 0, &music.channel);
-      system("clear");
       printf("%d  %d %s\n", music.nbsong, lecture,  music.playlist[lecture]);
+    }
+  if (cmd != '\0')
+    {
+      if (cmd == 'q')
+	quit();
+      else if (cmd == 'n')
+	lecture = next_music(lecture);
+      else if (cmd == 'p')
+	lecture = prev_music(lecture);
+      cmd = '\0';
     }
   if (kbhit())
     {
