@@ -5,7 +5,7 @@
 ** Login   <gomel_f@epitech.net>
 **
 ** Started on  Wed Apr 20 15:31:40 2016 Frédéric GOMEL
-** Last update Wed Apr 20 17:12:55 2016 Frédéric GOMEL
+** Last update Mon May  2 17:00:21 2016 Mineshot03
 */
 
 #include <stdio.h>
@@ -24,12 +24,12 @@ void	display_conf()
     {
       printf("%s CHEMIN MUSIQUE :%s %s\n", RED, REINIT, path_music);
       printf("%s PORT : %s %i\n", RED, REINIT, port);
-      printf("%s TOUCHES :%s -q = Quitter\n\t   -n = Suivante\n\t   -p = Précédent\n\t   -s = Pause\n", RED, REINIT);
+      printf("%s TOUCHES :%s -q = Quitter\n\t   -n = Suivante\n\t   -p = Précédent\n\t   -r = Recharger la playlist\n\t   -s = Pause\n", RED, REINIT);
     }
   else
     {
       printf("%s PATH MUSIC :%s %s\n",RED, REINIT, path_music);
       printf("%s PORT :%s %i\n", RED, REINIT, port);
-      printf("%s KEYS :%s -q = Quit\n\t-n = Next\n\t-p = Previous\n\t-s = Pause\n", RED, REINIT);
+      printf("%s KEYS :%s -q = Quit\n\t-n = Next\n\t-p = Previous\n\t   -r = Reload playlist\n\t   -s = Pause\n", RED, REINIT);
     }
 }

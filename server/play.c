@@ -5,7 +5,7 @@
 ** Login   <guillaume@epitech.net>
 **
 ** Started on  Wed Apr 20 16:25:29 2016 guillaume
-** Last update Mon Apr 25 12:28:09 2016 guillaume
+** Last update Mon May  2 16:58:42 2016 Mineshot03
 */
 
 #include <dirent.h>
@@ -13,7 +13,7 @@
 #include <sys/types.h>
 #include <errno.h>
 #include <string.h>
-#include <fmod.h>
+#include "fmod.h"
 #include "wincompat.h"
 #include "cmp-server.h"
 
@@ -65,7 +65,10 @@ int	play()
 	  result = FMOD_System_CreateSound(music.system, music.playlist[lecture], FMOD_SOFTWARE | FMOD_2D | FMOD_CREATESTREAM, 0, &music.music);
 	}
       FMOD_System_PlaySound(music.system, FMOD_CHANNEL_FREE, music.music, 0, &music.channel);
-      printf("%d  %d %s\n", music.nbsong, lecture,  music.playlist[lecture]);
+      system("clear");
+      copyright_display();
+      display_conf();
+      printf("%d/%d - %s\n", lecture + 1, music.nbsong, music.playlist[lecture]);
     }
   if (cmd != '\0')
     {
@@ -85,6 +88,15 @@ int	play()
 	lecture = next_music(lecture);
       else if (cmd == 'p')
 	lecture = prev_music(lecture);
+      else if (cmd == 'r')
+	{
+	  free(music.playlist);
+	  load_playlist();
+	  system("clear");
+	  copyright_display();
+	  display_conf();
+	  printf("%d/%d - %s\n", lecture + 1, music.nbsong, music.playlist[lecture]);
+	}
       /*else if (cmd == 's')
       pause();
       */
@@ -117,7 +129,9 @@ int	next_music(int lecture)
     }
   FMOD_System_PlaySound(music.system, FMOD_CHANNEL_FREE, music.music, 0, &music.channel);
   system("clear");
-  printf("%d  %d %s\n", music.nbsong, lecture,  music.playlist[lecture]);
+  copyright_display();
+  display_conf();
+  printf("%d/%d - %s\n", lecture + 1, music.nbsong, music.playlist[lecture]);
   return (lecture);
 }
 
@@ -137,6 +151,8 @@ int	prev_music(int lecture)
     }
   FMOD_System_PlaySound(music.system, FMOD_CHANNEL_FREE, music.music, 0, &music.channel);
   system("clear");
-  printf("%d  %d %s\n", music.nbsong, lecture,  music.playlist[lecture]);
+  copyright_display();
+  display_conf();
+  printf("%d/%d - %s\n", lecture + 1, music.nbsong, music.playlist[lecture]);
   return (lecture);
 }

@@ -5,7 +5,7 @@
 ** Login   <guillaume@epitech.net>
 **
 ** Started on  Thu Apr 21 16:35:31 2016 guillaume
-** Last update Mon Apr 25 11:54:50 2016 guillaume
+** Last update Mon May  2 16:49:48 2016 Mineshot03
 */
 
 #include <stdio.h>
@@ -22,6 +22,7 @@ void	load_playlist()
   char	*s;
 
   music.nbsong = 0;
+  rewinddir(music.rep);
   while ((music.file = readdir(music.rep)) != NULL)
     {
       s = music.file->d_name;
