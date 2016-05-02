@@ -5,7 +5,7 @@
 ** Login   <guillaume@epitech.net>
 **
 ** Started on  Wed Apr 20 16:25:29 2016 guillaume
-** Last update Mon May  2 17:06:30 2016 Mineshot03
+** Last update Mon May  2 17:16:45 2016 Mineshot03
 */
 
 #include <dirent.h>
@@ -68,6 +68,7 @@ int	play()
       system("clear");
       copyright_display();
       display_conf();
+      printf("%s ", "►");
       printf("%d/%d - %s\n", lecture + 1, music.nbsong, music.playlist[lecture]);
     }
   if (cmd != '\0')
@@ -91,10 +92,14 @@ int	play()
       else if (cmd == 'r')
 	{
 	  free(music.playlist);
+	  system("clear");
+	  printf("! Reloading !\n");
 	  load_playlist();
+	  sleep(1);
 	  system("clear");
 	  copyright_display();
 	  display_conf();
+	  printf("%s ", "►");
 	  printf("%d/%d - %s\n", lecture + 1, music.nbsong, music.playlist[lecture]);
 	}
       /*else if (cmd == 's')
@@ -132,6 +137,7 @@ int	next_music(int lecture)
   system("clear");
   copyright_display();
   display_conf();
+  printf("%s ", "►");
   printf("%d/%d - %s\n", lecture + 1, music.nbsong, music.playlist[lecture]);
   return (lecture);
 }
@@ -154,6 +160,7 @@ int	prev_music(int lecture)
   system("clear");
   copyright_display();
   display_conf();
+  printf("%s ", "►");
   printf("%d/%d - %s\n", lecture + 1, music.nbsong, music.playlist[lecture]);
   return (lecture);
 }
