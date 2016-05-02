@@ -5,7 +5,7 @@
 ** Login   <guillaume@epitech.net>
 **
 ** Started on  Wed Apr 20 16:25:29 2016 guillaume
-** Last update Mon May  2 16:58:42 2016 Mineshot03
+** Last update Mon May  2 17:06:30 2016 Mineshot03
 */
 
 #include <dirent.h>
@@ -100,6 +100,7 @@ int	play()
       /*else if (cmd == 's')
       pause();
       */
+      cmd = 0;
     }
   return (0);
   }
