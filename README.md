@@ -1,1 +1,1 @@
-# ConnectedMusiquePlayer
+# ConnectedMusicPlayer
