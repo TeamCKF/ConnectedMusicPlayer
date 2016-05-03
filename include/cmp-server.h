@@ -5,7 +5,7 @@
 ** Login   <gomel_f@epitech.net>
 **
 ** Started on  Tue Apr 19 18:33:03 2016 Frédéric GOMEL
-** Last update Tue May  3 11:38:04 2016 guillaume
+** Last update Tue May  3 14:05:09 2016 Frédéric GOMEL
 */
 
 #ifndef CMP_SERVER_H_
@@ -72,6 +72,7 @@ void	quit();
 
 void	copyright_display();
 void	display_conf();
+void	aff(int);
 
 /* Fonctions pour la configuration */
 
