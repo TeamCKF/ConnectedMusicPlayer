@@ -5,7 +5,7 @@
 ** Login   <gomel_f@epitech.net>
 **
 ** Started on  Thu Apr 21 15:33:31 2016 Frédéric GOMEL
-** Last update Sun Apr 24 02:47:07 2016 Frédéric GOMEL
+** Last update Mon May  2 16:44:04 2016 Frédéric GOMEL
 */
 
 #if defined (WIN32)
@@ -64,57 +64,57 @@ void	reseau()
 
   while (42)
     {
-  if (!erreur)
-    {
-      sock = socket(AF_INET, SOCK_STREAM, 0);
-      if (sock != INVALID_SOCKET)
+      if (!erreur)
 	{
-	  printf("Socket N°%d ouvert en TCP/IP\n", sock);
-	  sin.sin_addr.s_addr = htonl(INADDR_ANY);
-	  sin.sin_family = AF_INET;
-	  sin.sin_port = htons(port);
-	  if (setsockopt(sock, SOL_SOCKET, SO_REUSEADDR, &yes,sizeof(int)) == -1)
+	  sock = socket(AF_INET, SOCK_STREAM, 0);
+	  if (sock != INVALID_SOCKET)
 	    {
-	      perror("setsockopt");
-	      close(sock);
+	      printf("Socket N°%d ouvert en TCP/IP\n", sock);
+	      sin.sin_addr.s_addr = htonl(INADDR_ANY);
+	      sin.sin_family = AF_INET;
+	      sin.sin_port = htons(port);
+	      if (setsockopt(sock, SOL_SOCKET, SO_REUSEADDR, &yes,sizeof(int)) == -1)
+		{
+		  perror("setsockopt");
+		  close(sock);
 #if defined (WIN32)
-	      WSACleanup();
+		  WSACleanup();
 #endif
-	      exit(EXIT_FAILURE);
-	    }
-	  sock_err = bind(sock, (SOCKADDR*)&sin, sinsize);
-
-	  if (sock_err != SOCKET_ERROR)
-	    {
-	      sock_err = listen(sock, 5);
-	      if (connected == 0)
-		printf("Ecoute du port %d...\n", port);
+		  exit(EXIT_FAILURE);
+		}
+	      sock_err = bind(sock, (SOCKADDR*)&sin, sinsize);
 
 	      if (sock_err != SOCKET_ERROR)
 		{
-		  printf("Ecoute de client sur le port %d...\n", port);
-		  csock = accept(sock, (SOCKADDR*)&csin, &csinsize);
-		  printf("Un client se connecte avec la socket %d de %s:%d\n", csock, inet_ntoa(csin.sin_addr), htons(csin.sin_port));
+		  sock_err = listen(sock, 5);
+		  if (connected == 0)
+		    printf("Ecoute du port %d...\n", port);
+
+		  if (sock_err != SOCKET_ERROR)
+		    {
+		      printf("Ecoute de client sur le port %d...\n", port);
+		      csock = accept(sock, (SOCKADDR*)&csin, &csinsize);
+		      printf("Un client se connecte avec la socket %d de %s:%d\n", csock, inet_ntoa(csin.sin_addr), htons(csin.sin_port));
 		  while (recv(csock, &cmd, 1, 0) != SOCKET_ERROR && cmd != 'q')
 		    printf("Commande : %c\n", cmd);
+		    }
+		  else
+		    perror("listen");
 		}
 	      else
-		perror("listen");
+		perror("bind");
 	    }
-	  else
-	    perror("bind");
-	    }
-      printf("Fermeture du socket client\n");
-      close(csock);
-      printf("Fermeture de la socket serveur\n");
-      close(sock);
-      printf("Fermeture de port terminée\n");
-      connected = 1;
-    }
-  else
-    perror("socket");
+	  printf("Fermeture du socket client\n");
+	  close(csock);
+	  printf("Fermeture de la socket serveur\n");
+	  close(sock);
+	  printf("Fermeture de port terminée\n");
+	  connected = 1;
+	}
+      else
+	perror("socket");
 #if defined (WIN32)
-  WSACleanup();
+      WSACleanup();
 #endif
-}
+    }
 }

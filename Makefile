@@ -5,30 +5,30 @@
 ## Login   <gomel_f@epitech.net>
 ## 
 ## Started on  Sun Apr 17 02:47:00 2016 Frédéric GOMEL
-## Last update Mon May  2 14:53:15 2016 Frédéric GOMEL
+## Last update Tue May  3 10:17:03 2016 Frédéric GOMEL
 ##
 
 NAME1	=	cmp-server
 
 NAME2	=	cmp
 
-SRC1	=	server/main.c \
-		server/get_next_line.c \
-		server/my_realloc.c \
-		server/config.c \
-		server/display.c \
-		server/tools.c \
-		server/play.c \
-		server/load_playlist.c \
-		server/reseau.c
+SRC1	=	src/server/main.c \
+		src/server/get_next_line.c \
+		src/server/my_realloc.c \
+		src/server/config.c \
+		src/server/display.c \
+		src/server/tools.c \
+		src/server/play.c \
+		src/server/load_playlist.c \
+		src/server/reseau.c
 
-SRC2	=	client/main.c \
-		client/get_next_line.c \
-		client/config.c \
-		client/display.c \
-		client/my_realloc.c \
-		client/tools.c \
-		client/reseau.c
+SRC2	=	src/client/main.c \
+		src/client/get_next_line.c \
+		src/client/config.c \
+		src/client/display.c \
+		src/client/my_realloc.c \
+		src/client/tools.c \
+		src/client/reseau.c
 
 OBJ1	=	$(SRC1:.c=.o)
 
