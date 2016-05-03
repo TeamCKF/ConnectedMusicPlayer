@@ -5,7 +5,7 @@
 ** Login   <guillaume@epitech.net>
 **
 ** Started on  Wed Apr 20 16:25:29 2016 guillaume
-** Last update Tue May  3 12:24:22 2016 guillaume
+** Last update Tue May  3 12:31:01 2016 guillaume
 */
 
 #include <dirent.h>
@@ -103,19 +103,19 @@ int	play()
   FMOD_Channel_GetPosition(music.channel, &ms, FMOD_TIMEUNIT_MS);
   FMOD_Sound_GetLength(music.music, &lenms, FMOD_TIMEUNIT_MS);
   int	test;
-  int	tmp = 100;
-  test = (100 * ms) / lenms;
+  int	tmp = 50;
+  test = (50 * ms) / lenms;
   printf("%02d:%02d:%02d |", ms / 1000 / 60, ms / 1000 % 60, ms / 10 % 100);
-  while (tmp != 0)
+  while (tmp > 0)
     {
       while (test > 0)
 	{
 	  printf("=");
-	  test = test - 2;
-	  tmp = tmp - 2;
+	  test = test - 1;
+	  tmp = tmp - 1;
 	}
       printf(" ");
-      tmp = tmp - 2;
+      tmp = tmp - 1;
     }
   printf("| %02d:%02d:%02d\r", lenms / 1000 / 60, lenms / 1000 % 60, lenms / 10 % 100);
   fflush(stdout);
