@@ -84,6 +84,8 @@ int	play()
 	  sleep(1);
 	  aff(lecture);
 	}
+      else if (cmd == 's')
+	pausemusic(lecture);
       cmd = '\0';
     }
   if (kbhit())
