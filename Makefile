@@ -5,7 +5,7 @@
 ## Login   <gomel_f@epitech.net>
 ## 
 ## Started on  Sun Apr 17 02:47:00 2016 Frédéric GOMEL
-## Last update Tue May  3 10:17:03 2016 Frédéric GOMEL
+## Last update Tue May  3 14:40:53 2016 Frédéric GOMEL
 ##
 
 NAME1	=	cmp-server
@@ -46,7 +46,7 @@ RM	=	rm -f
 all:		$(NAME1) $(NAME2)
 
 $(NAME1):	$(OBJ1)
-		$(CC) -o $(NAME1) $(OBJ1) -L./lib -lfmodex64 $(LFLAGS)
+		$(CC) -o $(NAME1) $(OBJ1) -Llib/ -lfmodex64 $(LFLAGS)
 
 $(NAME2):	$(OBJ2)
 		$(CC) -o $(NAME2) $(OBJ2)

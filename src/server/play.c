@@ -5,7 +5,7 @@
 ** Login   <guillaume@epitech.net>
 **
 ** Started on  Wed Apr 20 16:25:29 2016 guillaume
-** Last update Tue May  3 12:31:01 2016 guillaume
+** Last update Tue May  3 16:07:29 2016 Frédéric GOMEL
 */
 
 #include <dirent.h>
@@ -75,6 +75,15 @@ int	play()
 	lecture = next_music(lecture);
       else if (cmd == 'p')
 	lecture = prev_music(lecture);
+      else if (cmd == 'r')
+	{
+	  free(music.playlist);
+	  system("clear");
+	  printf("! Reloading !\n");
+	  load_playlist();
+	  sleep(1);
+	  aff(lecture);
+	}
       cmd = '\0';
     }
   if (kbhit())
