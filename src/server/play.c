@@ -5,7 +5,7 @@
 ** Login   <guillaume@epitech.net>
 **
 ** Started on  Wed Apr 20 16:25:29 2016 guillaume
-** Last update Mon May  2 17:24:14 2016 Mineshot03
+** Last update Tue May  3 12:24:22 2016 guillaume
 */
 
 #include <dirent.h>
@@ -49,6 +49,8 @@ int	play()
 {
   FMOD_RESULT	result;
   int	key;
+  int	lenms;
+  int	ms;
   static int	lecture = -1;
 
   FMOD_Channel_IsPlaying(music.channel, &music.isplaying);
@@ -65,11 +67,7 @@ int	play()
 	  result = FMOD_System_CreateSound(music.system, music.playlist[lecture], FMOD_SOFTWARE | FMOD_2D | FMOD_CREATESTREAM, 0, &music.music);
 	}
       FMOD_System_PlaySound(music.system, FMOD_CHANNEL_FREE, music.music, 0, &music.channel);
-      system("clear");
-      copyright_display();
-      display_conf();
-      printf("%s ", (!music.isplaying) ? "►" : "‖");
-      printf("%d/%d - %s\n", lecture + 1, music.nbsong, music.playlist[lecture]);
+      aff(lecture);
     }
   if (cmd != '\0')
     {
@@ -96,18 +94,52 @@ int	play()
 	  printf("! Reloading !\n");
 	  load_playlist();
 	  sleep(1);
-	  system("clear");
-	  copyright_display();
-	  display_conf();
-	  printf("%s ", (!music.isplaying) ? "►" : "‖");
-	  printf("%d/%d - %s\n", lecture + 1, music.nbsong, music.playlist[lecture]);
+	  aff(lecture);
 	}
-      /*else if (cmd == 's')
-      pause();
-      */
+      else if (cmd == 's')
+	pausemusic(lecture);
       cmd = 0;
     }
+  FMOD_Channel_GetPosition(music.channel, &ms, FMOD_TIMEUNIT_MS);
+  FMOD_Sound_GetLength(music.music, &lenms, FMOD_TIMEUNIT_MS);
+  int	test;
+  int	tmp = 100;
+  test = (100 * ms) / lenms;
+  printf("%02d:%02d:%02d |", ms / 1000 / 60, ms / 1000 % 60, ms / 10 % 100);
+  while (tmp != 0)
+    {
+      while (test > 0)
+	{
+	  printf("=");
+	  test = test - 2;
+	  tmp = tmp - 2;
+	}
+      printf(" ");
+      tmp = tmp - 2;
+    }
+  printf("| %02d:%02d:%02d\r", lenms / 1000 / 60, lenms / 1000 % 60, lenms / 10 % 100);
+  fflush(stdout);
   return (0);
+}
+
+void	aff(int lecture)
+{
+  system("clear");
+  copyright_display();
+  display_conf();
+  FMOD_Channel_GetPaused(music.channel, &music.pause);
+  printf("%s ", (!music.pause) ? "►" : "‖");
+  printf("%d/%d - %s\n", lecture + 1, music.nbsong, music.playlist[lecture]);
+}
+
+void	pausemusic(int lecture)
+{
+  FMOD_Channel_GetPaused(music.channel, &music.pause);
+  if (music.pause)
+    FMOD_Channel_SetPaused(music.channel, 0);
+  else if (!music.pause)
+    FMOD_Channel_SetPaused(music.channel, 1);
+  aff(lecture);
   }
 
 void	quit()
@@ -134,11 +166,7 @@ int	next_music(int lecture)
       result = FMOD_System_CreateSound(music.system, music.playlist[lecture], FMOD_SOFTWARE | FMOD_2D | FMOD_CREATESTREAM, 0, &music.music);
     }
   FMOD_System_PlaySound(music.system, FMOD_CHANNEL_FREE, music.music, 0, &music.channel);
-  system("clear");
-  copyright_display();
-  display_conf();
-  printf("%s ", (!music.isplaying) ? "►" : "‖");
-  printf("%d/%d - %s\n", lecture + 1, music.nbsong, music.playlist[lecture]);
+  aff(lecture);
   return (lecture);
 }
 
@@ -157,10 +185,6 @@ int	prev_music(int lecture)
       result = FMOD_System_CreateSound(music.system, music.playlist[lecture], FMOD_SOFTWARE | FMOD_2D | FMOD_CREATESTREAM, 0, &music.music);
     }
   FMOD_System_PlaySound(music.system, FMOD_CHANNEL_FREE, music.music, 0, &music.channel);
-  system("clear");
-  copyright_display();
-  display_conf();
-  printf("%s ", (!music.isplaying) ? "►" : "‖");
-  printf("%d/%d - %s\n", lecture + 1, music.nbsong, music.playlist[lecture]);
+  aff(lecture);
   return (lecture);
 }
