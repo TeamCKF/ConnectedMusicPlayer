@@ -5,7 +5,7 @@
 ** Login   <gomel_f@epitech.net>
 **
 ** Started on  Thu Apr 21 15:33:31 2016 Frédéric GOMEL
-** Last update Mon May  2 16:44:04 2016 Frédéric GOMEL
+** Last update Tue May  3 16:41:29 2016 Frédéric GOMEL
 */
 
 #if defined (WIN32)
@@ -36,12 +36,14 @@ typedef struct sockaddr	SOCKADDR;
 #include <stdlib.h>
 #include "cmp-server.h"
 
-void	reseau()
+void*	reseau(void* data)
 {
   int	erreur;
   int	yes;
   int	connected;
   int	sock_err;
+  //int	thread_used[max_client];
+  int	i;
 
 #if defined (WIN32)
   WSADATA WSAData;
@@ -51,6 +53,12 @@ void	reseau()
 #endif
 
   yes = 1;
+  i = 0;
+  //  max_client = 2;
+  /* while (i != max_client) */
+  /*   { */
+  /*     max_client[i++] = 0; */
+  /*   } */
   connected = 0;
   /* Server */
   SOCKET	sock;
@@ -62,6 +70,7 @@ void	reseau()
   SOCKADDR_IN	csin;
   socklen_t csinsize = sizeof(csin);
 
+  pthread_t	thread_client[max_client];
   while (42)
     {
       if (!erreur)

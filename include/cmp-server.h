@@ -5,7 +5,7 @@
 ** Login   <gomel_f@epitech.net>
 **
 ** Started on  Tue Apr 19 18:33:03 2016 Frédéric GOMEL
-** Last update Tue May  3 14:05:09 2016 Frédéric GOMEL
+** Last update Tue May  3 16:24:18 2016 Frédéric GOMEL
 */
 
 #ifndef CMP_SERVER_H_
@@ -40,11 +40,6 @@ typedef struct sockaddr	SOCKADRR;
 #define RED "\033[31m"
 #define REINIT "\033[00m"
 
-int	lang;
-char	*path_music;
-int	port;
-char	cmd;
-
 typedef struct	s_music
 {
   FMOD_SYSTEM	*system;
@@ -58,7 +53,16 @@ typedef struct	s_music
   struct dirent	*file;
 }		t_music;
 
+
+int	lang;
+char	*path_music;
+int	port;
+char	cmd;
 t_music	music;
+int	max_client;
+
+
+/* Fonctions main */
 
 int	main();
 
@@ -96,6 +100,6 @@ int	prev_music(int lecture);
 
 /* Fonction pour le reseau */
 
-void	reseau();
+void*	reseau(void*);
 
 #endif /* !CMP_SERVER_H_ */

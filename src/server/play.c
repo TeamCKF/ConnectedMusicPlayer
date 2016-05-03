@@ -5,7 +5,7 @@
 ** Login   <guillaume@epitech.net>
 **
 ** Started on  Wed Apr 20 16:25:29 2016 guillaume
-** Last update Tue May  3 16:07:29 2016 Frédéric GOMEL
+** Last update Tue May  3 16:40:57 2016 Frédéric GOMEL
 */
 
 #include <dirent.h>
@@ -133,7 +133,7 @@ int	play()
 
 void	aff(int lecture)
 {
-  system("clear");
+  //  system("clear");
   copyright_display();
   display_conf();
   FMOD_Channel_GetPaused(music.channel, &music.pause);
