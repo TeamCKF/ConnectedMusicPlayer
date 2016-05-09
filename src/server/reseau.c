@@ -5,7 +5,7 @@
 ** Login   <gomel_f@epitech.net>
 **
 ** Started on  Thu Apr 21 15:33:31 2016 Frédéric GOMEL
-** Last update Tue May  3 16:41:29 2016 Frédéric GOMEL
+** Last update Mon May  9 11:43:02 2016 Frédéric GOMEL
 */
 
 #if defined (WIN32)
@@ -34,6 +34,7 @@ typedef struct sockaddr	SOCKADDR;
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <pthread.h>
 #include "cmp-server.h"
 
 void*	reseau(void* data)
@@ -42,7 +43,6 @@ void*	reseau(void* data)
   int	yes;
   int	connected;
   int	sock_err;
-  //int	thread_used[max_client];
   int	i;
 
 #if defined (WIN32)
@@ -54,23 +54,39 @@ void*	reseau(void* data)
 
   yes = 1;
   i = 0;
-  //  max_client = 2;
-  /* while (i != max_client) */
-  /*   { */
-  /*     max_client[i++] = 0; */
-  /*   } */
   connected = 0;
+
+  while(i != 10)
+    {
+      thread_used[i] = 0;
+      i++;
+    }
   /* Server */
   SOCKET	sock;
   SOCKADDR_IN	sin;
   socklen_t sinsize = sizeof(sin);
 
-  /* Client */
-  SOCKET	csock;
-  SOCKADDR_IN	csin;
-  socklen_t csinsize = sizeof(csin);
+  pthread_t	tclient1;
+  pthread_t	tclient2;
+  pthread_t	tclient3;
+  pthread_t	tclient4;
+  pthread_t	tclient5;
+  pthread_t	tclient6;
+  pthread_t	tclient7;
+  pthread_t	tclient8;
+  pthread_t	tclient9;
+  pthread_t	tclient10;
 
-  pthread_t	thread_client[max_client];
+  clientsizeaddr1 = sizeof(clientaddr1);
+  clientsizeaddr2 = sizeof(clientaddr2);
+  clientsizeaddr3 = sizeof(clientaddr3);
+  clientsizeaddr4 = sizeof(clientaddr4);
+  clientsizeaddr5 = sizeof(clientaddr5);
+  clientsizeaddr6 = sizeof(clientaddr6);
+  clientsizeaddr7 = sizeof(clientaddr7);
+  clientsizeaddr8 = sizeof(clientaddr8);
+  clientsizeaddr9 = sizeof(clientaddr9);
+  clientsizeaddr10 = sizeof(clientaddr10);
   while (42)
     {
       if (!erreur)
@@ -95,27 +111,77 @@ void*	reseau(void* data)
 
 	      if (sock_err != SOCKET_ERROR)
 		{
-		  sock_err = listen(sock, 5);
-		  if (connected == 0)
-		    printf("Ecoute du port %d...\n", port);
-
-		  if (sock_err != SOCKET_ERROR)
+		  while (sock_err = listen(sock, 5) != SOCKET_ERROR)
 		    {
-		      printf("Ecoute de client sur le port %d...\n", port);
-		      csock = accept(sock, (SOCKADDR*)&csin, &csinsize);
-		      printf("Un client se connecte avec la socket %d de %s:%d\n", csock, inet_ntoa(csin.sin_addr), htons(csin.sin_port));
-		  while (recv(csock, &cmd, 1, 0) != SOCKET_ERROR && cmd != 'q')
-		    printf("Commande : %c\n", cmd);
+		      if (connected == 0)
+			printf("Ecoute du port %d...\n", port);
+
+		      if (thread_used[0] == 0)
+			{
+			  thread_used[0] = 1;
+			  client1 = accept(sock, (SOCKADDR*)&clientaddr1, &clientsizeaddr1);
+			  pthread_create(&tclient1, NULL, &gest_client1, NULL);
+			}
+		      else if (thread_used[1] == 0)
+			{
+			  thread_used[1] = 1;
+			  client2 = accept(sock, (SOCKADDR*)&clientaddr2, &clientsizeaddr2);
+			  pthread_create(&tclient2, NULL, &gest_client2, NULL);
+			}
+		      else if (thread_used[2] == 0)
+			{
+			  thread_used[2] = 1;
+ 			  client3 = accept(sock, (SOCKADDR*)&clientaddr3, &clientsizeaddr3);
+			  pthread_create(&tclient3, NULL, &gest_client3, NULL);
+			}
+		      else if (thread_used[3] == 0)
+			{
+			  thread_used[3] = 1;
+			  client4 = accept(sock, (SOCKADDR*)&clientaddr4, &clientsizeaddr4);
+			  pthread_create(&tclient4, NULL, &gest_client4, NULL);
+			}
+		      else if (thread_used[4] == 0)
+			{
+			  thread_used[4] = 1;
+			  client5 = accept(sock, (SOCKADDR*)&clientaddr5, &clientsizeaddr5);
+			  pthread_create(&tclient5, NULL, &gest_client5, NULL);
+			}
+		      else if (thread_used[5] == 0)
+			{
+			  thread_used[5] = 1;
+			  client6 = accept(sock, (SOCKADDR*)&clientaddr6, &clientsizeaddr6);
+			  pthread_create(&tclient6, NULL, &gest_client6, NULL);
+			}
+		      else if (thread_used[6] == 0)
+			{
+			  thread_used[6] = 1;
+			  client7 = accept(sock, (SOCKADDR*)&clientaddr7, &clientsizeaddr7);
+			  pthread_create(&tclient7, NULL, &gest_client7, NULL);
+			}
+		      else if (thread_used[7] == 0)
+			{
+			  thread_used[7] = 1;
+			  client8 = accept(sock, (SOCKADDR*)&clientaddr8, &clientsizeaddr8);
+			  pthread_create(&tclient8, NULL, &gest_client8, NULL);
+			}
+		      else if (thread_used[8] == 0)
+			{
+			  thread_used[8] = 1;
+			  client9 = accept(sock, (SOCKADDR*)&clientaddr9, &clientsizeaddr9);
+			  pthread_create(&tclient9, NULL, &gest_client9, NULL);
+			}
+		      else if (thread_used[9] == 0)
+			{
+			  thread_used[9] = 1;
+			  client10 = accept(sock, (SOCKADDR*)&clientaddr10, &clientsizeaddr10);
+			  pthread_create(&tclient10, NULL, &gest_client10, NULL);
+			}
 		    }
-		  else
-		    perror("listen");
 		}
 	      else
 		perror("bind");
 	    }
-	  printf("Fermeture du socket client\n");
-	  close(csock);
-	  printf("Fermeture de la socket serveur\n");
+	  printf("Fermeture du socket server\n");
 	  close(sock);
 	  printf("Fermeture de port terminée\n");
 	  connected = 1;

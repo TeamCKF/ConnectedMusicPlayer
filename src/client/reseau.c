@@ -6,7 +6,7 @@
 ** Login   <gomel_f@epitech.net>
 **
 ** Started on  Thu Apr 21 17:23:29 2016 Frédéric GOMEL
-** Last update Sun Apr 24 02:43:38 2016 Frédéric GOMEL
+** Last update Mon May  9 03:11:41 2016 Frédéric GOMEL
 */
 
 #if defined (WIN32)
@@ -82,8 +82,6 @@ void	reseau()
 
 
   connected = 0;
-  SOCKET	sock;
-  SOCKADDR_IN	sin;
   char	cmd;
 
   if (!erreur)

@@ -5,8 +5,31 @@
 ** Login   <gomel_f@epitech.net>
 **
 ** Started on  Wed Apr 20 16:32:25 2016 Frédéric GOMEL
-** Last update Sun Apr 24 18:52:07 2016 Frédéric GOMEL
+** Last update Mon May  9 03:11:34 2016 Frédéric GOMEL
 */
+
+#if defined (WIN32)
+
+#include <winsock2.h>
+
+typedef int socketlen_t;
+
+#elif defined (linux)
+
+#include <sys/types.h>
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <arpa/inet.h>
+#include <unistd.h>
+
+#define INVALID_SOCKET -1
+#define SOCKET_ERROR -1
+
+typedef int SOCKET;
+typedef struct sockaddr_in SOCKADDR_IN;
+typedef struct sockaddr	SOCKADDR;
+
+#endif
 
 #ifndef CMP_CLIENT_H_
 #define CMP_CLIENT_H_
@@ -17,6 +40,8 @@
 char	*adress;
 int	port;
 int	lang;
+SOCKET	sock;
+SOCKADDR_IN sin;
 
 int	main();
 

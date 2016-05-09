@@ -5,7 +5,7 @@
 ** Login   <guillaume@epitech.net>
 **
 ** Started on  Wed Apr 20 16:25:29 2016 guillaume
-** Last update Tue May  3 16:40:57 2016 Frédéric GOMEL
+** Last update Mon May  9 13:28:46 2016 Frédéric GOMEL
 */
 
 #include <dirent.h>
@@ -72,9 +72,15 @@ int	play()
   if (cmd != '\0')
     {
       if (cmd == 'n')
-	lecture = next_music(lecture);
+	{
+	  lecture = next_music(lecture);
+	  sendtitle();
+	}
       else if (cmd == 'p')
-	lecture = prev_music(lecture);
+	{
+	  lecture = prev_music(lecture);
+	  sendtitle();
+	}
       else if (cmd == 'r')
 	{
 	  free(music.playlist);
@@ -85,7 +91,10 @@ int	play()
 	  aff(lecture);
 	}
       else if (cmd == 's')
-	pausemusic(lecture);
+	{
+	  pausemusic(lecture);
+	  sendtitle();
+	}
       cmd = '\0';
     }
   if (kbhit())
@@ -117,6 +126,7 @@ int	play()
   int	tmp = 50;
   test = (50 * ms) / lenms;
   printf("%02d:%02d:%02d |", ms / 1000 / 60, ms / 1000 % 60, ms / 10 % 100);
+  sprintf(time_music, "%d\0", ms);
   while (tmp > 0)
     {
       while (test > 0)
@@ -135,12 +145,20 @@ int	play()
 
 void	aff(int lecture)
 {
-  //  system("clear");
+  int	i;
+
+  i = 0;
+  system("clear");
   copyright_display();
   display_conf();
   FMOD_Channel_GetPaused(music.channel, &music.pause);
   printf("%s ", (!music.pause) ? "►" : "‖");
   printf("%d/%d - %s\n", lecture + 1, music.nbsong, music.playlist[lecture]);
+  while (i < 30)
+    {
+        titre[i] = music.playlist[lecture][i];
+	i++;
+    }
 }
 
 void	pausemusic(int lecture)
