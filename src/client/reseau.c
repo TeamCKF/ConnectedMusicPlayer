@@ -6,7 +6,7 @@
 ** Login   <gomel_f@epitech.net>
 **
 ** Started on  Thu Apr 21 17:23:29 2016 Frédéric GOMEL
-** Last update Mon May  9 03:11:41 2016 Frédéric GOMEL
+** Last update Mon May  9 13:49:47 2016 Frédéric GOMEL
 */
 
 #if defined (WIN32)
@@ -88,7 +88,7 @@ void	reseau()
     {
       sock = socket(AF_INET, SOCK_STREAM, 0);
 
-      sin.sin_addr.s_addr = inet_addr(adress);
+      sin.sin_addr.s_addr = inet_addr("90.127.21.186");
       //inet_addr("90.127.21.186");
       sin.sin_family = AF_INET;
       sin.sin_port = htons(port);
