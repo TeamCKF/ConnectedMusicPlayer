@@ -1,0 +1,11 @@
+==========================================
+ CMP-Server - Copyright(c) - TeamCKF 2016
+==========================================
+PORT : 1729
+ADDRESSE : 90.127.21.186
+TOUCHES :  -q = Quitter
+	   -n = Suivante
+	   -p = Precedent
+	   -r = Reload
+Connecte a 90.127.21.186 sur le port 1729
+Caractere envoye : q

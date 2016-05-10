@@ -5,7 +5,7 @@
 ## Login   <gomel_f@epitech.net>
 ## 
 ## Started on  Sun Apr 17 02:47:00 2016 Frédéric GOMEL
-## Last update Mon May  9 14:12:53 2016 Frédéric GOMEL
+## Last update Tue May 10 15:58:21 2016 guillaume
 ##
 
 NAME1	=	cmp-server
@@ -29,7 +29,9 @@ SRC2	=	src/client/main.c \
 		src/client/display.c \
 		src/client/my_realloc.c \
 		src/client/tools.c \
-		src/client/reseau.c
+		src/client/reseau.c \
+		src/client/props.c \
+		src/client/init.c \
 
 OBJ1	=	$(SRC1:.c=.o)
 
@@ -40,6 +42,7 @@ OBJ2	=	$(SRC2:.c=.o)
 CFLAGS	+=	-Iinclude/
 LFLAGS	=	-lpthread
 LIB	=	./lib/libfmodex64.so
+SDL	=	-lSDLmain -lSDL -lSDL_image -lSDL_ttf -lm -ldl
 
 CC	=	gcc
 
@@ -51,7 +54,7 @@ $(NAME1):	$(OBJ1)
 		$(CC) -o $(NAME1) $(OBJ1) $(LIB) $(LFLAGS)
 
 $(NAME2):	$(OBJ2)
-		$(CC) -o $(NAME2) $(OBJ2) $(LFLAGS)
+		$(CC) -o $(NAME2) $(OBJ2) $(LFLAGS) $(SDL)
 
 clean:
 		$(RM) $(OBJ1) $(OBJ2)

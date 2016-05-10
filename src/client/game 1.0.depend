@@ -1,0 +1,144 @@
+# depslib dependency file v1.0
+1462836606 source:c:\users\guill\desktop\game 1.0\main.c
+	<windows.h>
+	"game.h"
+	"cmp-client.h"
+
+1462313203 t.h"
+
+1462836389 c:\users\guill\desktop\game 1.0\game.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<math.h>
+	<pthread.h>
+	<SDL/SDL.h>
+	<SDL/SDL_ttf.h>
+	<SDL/SDL_image.h>
+
+1462836389 mage.h>
+
+1462495251 source:c:\users\guill\desktop\game 1.0\props.c
+	<stdbool.h>
+	"game.h"
+	"cmp-client.h"
+
+1462462248 source:c:\users\guill\desktop\game 1.0\init.c
+	"game.h"
+
+1462462747 
+
+1462320669 source:c:\users\guill\desktop\game 1.0\scolling.c
+	"game.h"
+
+1462314740 source:c:\users\guill\desktop\game 1.0\config.c
+	<fcntl.h>
+	<stdio.h>
+	<unistd.h>
+	<string.h>
+	<stdlib.h>
+	"cmp-client.h"
+	"get_next_line.h"
+
+1462313203 line.h"
+
+1462834392 c:\users\guill\desktop\game 1.0\cmp-client.h
+	<winsock2.h>
+	<sys/types.h>
+	<sys/socket.h>
+	<netinet/in.h>
+	<arpa/inet.h>
+	<unistd.h>
+	<stdio.h>
+	<stdlib.h>
+
+1462834392 
+
+1462313335 c:\users\guill\desktop\game 1.0\get_next_line.h
+
+1462462747 source:c:\users\guill\desktop\game 1.0\display.c
+	<stdio.h>
+	"cmp-client.h"
+	"game.h"
+
+1462313203 source:c:\users\guill\desktop\game 1.0\get_next_line.c
+	<stdlib.h>
+	<unistd.h>
+	"get_next_line.h"
+
+1462313203 source:c:\users\guill\desktop\game 1.0\my_realloc.c
+	<stdlib.h>
+	"get_next_line.h"
+
+1462836068 source:c:\users\guill\desktop\game 1.0\reseau.c
+	"game.h"
+	"cmp-client.h"
+
+1462313203 source:c:\users\guill\desktop\game 1.0\tools.c
+	"cmp-client.h"
+
+1462311140 source:/media/guillaume/GSP1RMCPRXF/game 1.0/config.c
+	<fcntl.h>
+	<stdio.h>
+	<unistd.h>
+	<string.h>
+	<stdlib.h>
+	"cmp-client.h"
+	"get_next_line.h"
+
+1462830792 /media/guillaume/GSP1RMCPRXF/game 1.0/cmp-client.h
+	<winsock2.h>
+	<sys/types.h>
+	<sys/socket.h>
+	<netinet/in.h>
+	<arpa/inet.h>
+	<unistd.h>
+	<stdio.h>
+	<stdlib.h>
+
+1462309735 /media/guillaume/GSP1RMCPRXF/game 1.0/get_next_line.h
+
+1462459147 source:/media/guillaume/GSP1RMCPRXF/game 1.0/display.c
+	<stdio.h>
+	"cmp-client.h"
+	"game.h"
+
+1462832789 /media/guillaume/GSP1RMCPRXF/game 1.0/game.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<math.h>
+	<pthread.h>
+	<SDL/SDL.h>
+	<SDL/SDL_ttf.h>
+	<SDL/SDL_image.h>
+
+1462309603 source:/media/guillaume/GSP1RMCPRXF/game 1.0/get_next_line.c
+	<stdlib.h>
+	<unistd.h>
+	"get_next_line.h"
+
+1462458648 source:/media/guillaume/GSP1RMCPRXF/game 1.0/init.c
+	"game.h"
+
+1462833006 source:/media/guillaume/GSP1RMCPRXF/game 1.0/main.c
+	<windows.h>
+	"game.h"
+	"cmp-client.h"
+
+1462309603 source:/media/guillaume/GSP1RMCPRXF/game 1.0/my_realloc.c
+	<stdlib.h>
+	"get_next_line.h"
+
+1462491651 source:/media/guillaume/GSP1RMCPRXF/game 1.0/props.c
+	<stdbool.h>
+	"game.h"
+	"cmp-client.h"
+
+1462833249 source:/media/guillaume/GSP1RMCPRXF/game 1.0/reseau.c
+	"game.h"
+	"cmp-client.h"
+
+1462309603 source:/media/guillaume/GSP1RMCPRXF/game 1.0/tools.c
+	"cmp-client.h"
+

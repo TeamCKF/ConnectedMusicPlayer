@@ -32,7 +32,7 @@ void	set_language()
 	lang = 0;
     }
   if (lang == 1)
-    printf("Cool, un français :P. Bienvenue.\n");
+    printf("Cool, un francais :P. Bienvenue.\n");
   else
     printf("You choose the international language ! Great i didn't do the translation for nothing ;)\n");
 }
@@ -40,7 +40,7 @@ void	set_language()
 void	set_port()
 {
   if (lang == 1)
-    printf("Désignez le port de connection au serveur. Entrez 0 pour le port par défault (1729)\n");
+    printf("Designez le port de connection au serveur. Entrez 0 pour le port par default (1729)\n");
   else
     printf("Put the port of the server. Put 0 to use the default port (1729)\n");
   scanf("%s", portp);
@@ -63,7 +63,7 @@ void	set_adress()
 
 void	set_config()
 {
-  printf("\033[32mWelcome to ConnectedMusicPlayer-Client configuration system.\n\033[00m");
+  printf("Welcome to ConnectedMusicPlayer-Client configuration system.\n");
   set_language();
   set_port();
   set_adress();

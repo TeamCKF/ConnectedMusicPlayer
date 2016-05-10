@@ -6,65 +6,41 @@
 ** Login   <gomel_f@epitech.net>
 **
 ** Started on  Thu Apr 21 17:23:29 2016 Frédéric GOMEL
-** Last update Mon May  9 14:07:01 2016 Frédéric GOMEL
+** Last update Tue May 10 14:40:26 2016 guillaume
 */
 
-#if defined (WIN32)
 
-#include <winsock2.h>
-
-typedef int socketlen_t;
-
-#elif defined (linux)
-
-#include <sys/types.h>
-#include <sys/socket.h>
-#include <netinet/in.h>
-#include <arpa/inet.h>
-#include <unistd.h>
-
-#define INVALID_SOCKET -1
-#define SOCKET_ERROR -1
-
-typedef int SOCKET;
-typedef struct sockaddr_in SOCKADDR_IN;
-typedef struct sockaddr	SOCKADDR;
-
-#endif
-
-#include <stdio.h>
-#include <stdlib.h>
-#include "wincompat.h"
+//#include "wincompat.h"
+#include "game.h"
 #include "cmp-client.h"
 
 char	get_cmd(SOCKET sock)
 {
-  char	cmd;
-  int	sock_err;
+    int	sock_err;
 
-  cmd = getch();
-  if (cmd == 'q')
+    getImput();
+    if (cmd == 'q')
     {
-      sock_err = send(sock, &cmd, 1, 0);
-      if (sock_err != SOCKET_ERROR)
-	{
-	  printf("Caractère envoyé : %c\n", cmd);
-	  shutdown(sock, SHUT_WR);
-	}
-      else
-	printf("Erreur de transmission...\n");
-      return (cmd);
+        sock_err = send(sock, &cmd, 1, 0);
+        if (sock_err != SOCKET_ERROR)
+        {
+            printf("Caractere envoye : %c\n", cmd);
+            shutdown(sock, SHUT_WR);
+        }
+        else
+            printf("Erreur de transmission...\n");
+        return (cmd);
     }
-  if (cmd == 'n' || cmd == 'p' || cmd == 's')
+    if (cmd == 'n' || cmd == 'p' || cmd == 'r')
     {
-      sock_err = send(sock, &cmd, 1, 0);
-      if (sock_err != SOCKET_ERROR)
-	printf("Caractère envoyé : %c\n", cmd);
-      else
-	printf("Erreur de transmission...\n");
+        sock_err = send(sock, &cmd, 1, 0);
+        if (sock_err != SOCKET_ERROR)
+            printf("Caractere envoye : %c\n", cmd);
+        else
+            printf("Erreur de transmission...\n");
     }
-
-  return cmd;
+    aff();
+    return cmd;
 }
 
 void	reseau()
@@ -72,7 +48,6 @@ void	reseau()
   int	erreur;
   int	sock_err;
   int	connected;
-  SOCKADDR_IN sin;
 
 #if defined (WIN32)
   WSADATA WSAData;
@@ -89,16 +64,16 @@ void	reseau()
     {
       sock = socket(AF_INET, SOCK_STREAM, 0);
 
-      sin.sin_addr.s_addr = inet_addr(adress);
+      sinn.sin_addr.s_addr = inet_addr(adress);
       //inet_addr("90.127.21.186");
-      sin.sin_family = AF_INET;
-      sin.sin_port = htons(port);
+      sinn.sin_family = AF_INET;
+      sinn.sin_port = htons(port);
 
-      if (connect(sock, (SOCKADDR*)&sin, sizeof(sin)) != SOCKET_ERROR)
+      if (connect(sock, (SOCKADDR*)&sinn, sizeof(sinn)) != SOCKET_ERROR)
 	{
 	  if (connected == 0)
 	    {
-	      printf("Connecté à %s sur le port %d\n", inet_ntoa(sin.sin_addr), htons(sin.sin_port));
+	      printf("Connecte a %s sur le port %d\n", inet_ntoa(sinn.sin_addr), htons(sinn.sin_port));
 	      connected = 1;
 	    }
 	  while (cmd != 'q')
