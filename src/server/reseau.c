@@ -5,7 +5,7 @@
 ** Login   <gomel_f@epitech.net>
 **
 ** Started on  Thu Apr 21 15:33:31 2016 Frédéric GOMEL
-** Last update Mon May  9 11:43:02 2016 Frédéric GOMEL
+** Last update Mon May  9 14:12:17 2016 Frédéric GOMEL
 */
 
 #if defined (WIN32)
@@ -113,9 +113,6 @@ void*	reseau(void* data)
 		{
 		  while (sock_err = listen(sock, 5) != SOCKET_ERROR)
 		    {
-		      if (connected == 0)
-			printf("Ecoute du port %d...\n", port);
-
 		      if (thread_used[0] == 0)
 			{
 			  thread_used[0] = 1;

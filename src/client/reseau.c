@@ -6,7 +6,7 @@
 ** Login   <gomel_f@epitech.net>
 **
 ** Started on  Thu Apr 21 17:23:29 2016 Frédéric GOMEL
-** Last update Mon May  9 13:49:47 2016 Frédéric GOMEL
+** Last update Mon May  9 14:07:01 2016 Frédéric GOMEL
 */
 
 #if defined (WIN32)
@@ -72,6 +72,7 @@ void	reseau()
   int	erreur;
   int	sock_err;
   int	connected;
+  SOCKADDR_IN sin;
 
 #if defined (WIN32)
   WSADATA WSAData;
@@ -88,7 +89,7 @@ void	reseau()
     {
       sock = socket(AF_INET, SOCK_STREAM, 0);
 
-      sin.sin_addr.s_addr = inet_addr("90.127.21.186");
+      sin.sin_addr.s_addr = inet_addr(adress);
       //inet_addr("90.127.21.186");
       sin.sin_family = AF_INET;
       sin.sin_port = htons(port);

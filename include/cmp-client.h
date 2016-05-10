@@ -5,7 +5,7 @@
 ** Login   <gomel_f@epitech.net>
 **
 ** Started on  Wed Apr 20 16:32:25 2016 Frédéric GOMEL
-** Last update Mon May  9 03:11:34 2016 Frédéric GOMEL
+** Last update Mon May  9 14:05:19 2016 Frédéric GOMEL
 */
 
 #if defined (WIN32)
@@ -41,7 +41,7 @@ char	*adress;
 int	port;
 int	lang;
 SOCKET	sock;
-SOCKADDR_IN sin;
+// SOCKADDR_IN sin;
 
 int	main();
 
