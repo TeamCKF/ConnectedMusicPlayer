@@ -5,7 +5,7 @@
 ** Login   <guillaume@epitech.net>
 **
 ** Started on  Wed Apr 20 16:25:29 2016 guillaume
-** Last update Mon May  9 13:28:46 2016 Frédéric GOMEL
+** Last update Tue May 10 15:36:50 2016 Frédéric GOMEL
 */
 
 #include <dirent.h>
@@ -154,10 +154,18 @@ void	aff(int lecture)
   FMOD_Channel_GetPaused(music.channel, &music.pause);
   printf("%s ", (!music.pause) ? "►" : "‖");
   printf("%d/%d - %s\n", lecture + 1, music.nbsong, music.playlist[lecture]);
-  while (i < 30)
+  while (i < 40)
     {
-        titre[i] = music.playlist[lecture][i];
-	i++;
+      if (music.playlist[lecture][i] == '\0' || i == 39)
+	{
+	  titre[i] = '\0';
+	  i = 40;
+	}
+      else
+	{
+	  titre[i] = music.playlist[lecture][i];
+	  i++;
+	}
     }
 }
 

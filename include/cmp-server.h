@@ -5,7 +5,7 @@
 ** Login   <gomel_f@epitech.net>
 **
 ** Started on  Tue Apr 19 18:33:03 2016 Frédéric GOMEL
-** Last update Mon May  9 13:28:30 2016 Frédéric GOMEL
+** Last update Tue May 10 15:30:01 2016 Frédéric GOMEL
 */
 
 #if defined (WIN32)
@@ -61,7 +61,7 @@ char	*path_music;
 int	port;
 char	cmd;
 t_music	music;
-char	titre[30];
+char	titre[40];
 char	time_music[36000000];
 
 /* Fonctions main */
